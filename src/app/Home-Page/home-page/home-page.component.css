@@ -1,0 +1,116 @@
+.homepage-container {
+    position: relative;
+    height: 100vh;
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), /* Darken overlay */
+        url('/assets/Images/travel-canvas-home-page.jpg'); /* Background image */
+    background-size: cover; /* Cover entire container */
+    background-position: center; /* Center the image */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.custom-card {
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    padding: 16px;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: 'Roboto', sans-serif; /* Apply new font */
+    color: white; /* Default text color */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Add shadow to text */
+}
+
+.top-left {
+    top: 96px;
+    left: 156px;
+    background: rgba(255, 111, 97, 0.9); /* Slightly darker pink for better readability */
+}
+
+.top-right {
+    top: 96px;
+    right: 156px;
+    background: rgba(212, 165, 165, 0.9); /* Slightly darker coral */
+}
+
+.bottom-left {
+    bottom: 46px;
+    left: 156px;
+    background: rgba(107, 79, 79, 0.9); /* Slightly darker brown */
+}
+
+.bottom-right {
+    bottom: 46px;
+    right: 156px;
+    background: rgba(100, 150, 255, 0.9); /* Slightly darker blue */
+}
+
+/* Adjust text inside the cards */
+.custom-card-title {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.custom-card p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+    color: inherit; /* Match color to the parent */
+}
+
+.center-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white; /* Initial color */
+    padding: 20px;
+    width: 27%;
+    max-width: 600px;
+    height: auto;
+    animation: textColorChange 5s infinite alternate; /* Animation for color change */
+}
+
+/* Keyframes for text color animation */
+@keyframes textColorChange {
+    0% {
+        color: white; /* Initial color */
+    }
+    25% {
+        color: #ff6f61; /* Soft pink */
+    }
+    50% {
+        color: #4caf50; /* Green */
+    }
+    75% {
+        color: #2196f3; /* Blue */
+    }
+    100% {
+        color: white; /* Return to initial color */
+    }
+}
+
+
+.center-content h2, 
+.center-content p {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to text */
+}
+
+.center-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.center-content p {
+    font-size: 16px;
+    margin-top: 0;
+}
+
+.custom-card {
+    cursor: pointer;
+  }
