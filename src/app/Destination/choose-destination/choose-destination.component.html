@@ -1,0 +1,28 @@
+<div class="intro">
+    <h2>Explore the world at your pace.</h2>
+    <p>
+      Select a 
+      <span class="link" (click)="goToCity()">city</span> 
+      or 
+      <span class="link" (click)="goToCountry()">country</span> 
+      to start your journey.
+    </p>
+  </div>
+
+  <div class="dropdown-container" *ngIf="cityDropdown">
+    <h3>Choose City</h3>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>City</mat-label>
+      <mat-select [(value)]="selectedCityId" (selectionChange)="onCityChange()">
+        <mat-option *ngFor="let destination of destinations" [value]="destination.cityid">
+          {{ destination.cityname }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="country-display">
+      <mat-label>Country</mat-label>
+      <input matInput [value]="selectedCountry" readonly />
+    </mat-form-field>
+  </div>
