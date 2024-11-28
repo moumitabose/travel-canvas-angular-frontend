@@ -42,13 +42,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SaveUserFormComponent } from './User/save-user-form/save-user-form.component';
 import { HomePageComponent } from './Home-Page/home-page/home-page.component';
 import { HeaderComponent } from './Home-Page/header/header.component';
+import { ShowPackageListComponent } from './Packages/show-package-list/show-package-list.component';
+import { ChooseDestinationComponent } from './Destination/choose-destination/choose-destination.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SaveUserFormComponent,
     HomePageComponent,
-    HeaderComponent
+    HeaderComponent,
+    ShowPackageListComponent,
+    ChooseDestinationComponent,
+    
   ],
   imports: [
     BrowserModule,

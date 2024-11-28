@@ -1,0 +1,78 @@
+.intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontally center the content */
+    text-align: center; /* Center the text */
+    margin-top: 20px; /* Adjust the top margin as needed */
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease-in-out; /* Smooth transition when moving */
+  }
+  
+  /* Link styling */
+  .link {
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  /* Styling for dropdown-container */
+  .dropdown-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontally center the content */
+    justify-content: flex-start; /* Align content to the top */
+    padding: 20px;
+    max-width: 300px; /* Set max width */
+    margin: 0 auto; /* Center the container horizontally */
+    text-align: center; /* Center the text inside */
+    background-color: #fafafa; /* Light background color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
+    position: relative;
+    z-index: 1;
+    max-height: 400px; /* Set the max height to make it smaller */
+    overflow-y: auto; /* Add scroll if the content exceeds the max height */
+  }
+  
+  /* Styling for dropdown header */
+  h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333; /* Dark text color */
+  }
+  
+  /* Styling for form fields */
+  .mat-form-field {
+    width: 100%; /* Make form fields stretch to container width */
+    margin-bottom: 16px; /* Space between fields */
+  }
+  
+  .country-display input {
+    background-color: #f0f0f0; /* Light background for the readonly input */
+  }
+  
+  /* Styling for mat-select */
+  .dropdown-field mat-select {
+    border-radius: 4px;
+  }
+  
+  /* Label styling */
+  mat-label {
+    font-size: 14px;
+    color: blue;
+  }
+  
+  /* Option styling */
+  .mat-option {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+  
+  /* Select trigger styling */
+  .mat-select-trigger {
+    font-size: 14px;
+  }
+  

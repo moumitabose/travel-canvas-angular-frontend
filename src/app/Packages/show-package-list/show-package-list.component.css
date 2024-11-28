@@ -1,0 +1,15 @@
+.city-info {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .city-info h2 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .city-info p {
+    font-size: 18px;
+    color: #666;
+  }
+  
