@@ -1,78 +1,173 @@
+.homepage-container {
+  position: relative;
+  height: 100vh;
+  background: 
+      linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), /* Very subtle lighter overlay */
+      url('/assets/Images/city-country.jpg'); /* Background image */
+  background-size: cover; /* Cover entire container */
+  background-position: center; /* Center the image */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  animation: fadeIn 2s ease-out; /* Fade-in animation */
+}
+
+.intro-card {
+  background-color: rgba(0, 0, 0, 0.5); /* Slight dark background */
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Shadow around the card */
+  text-align: center;
+  width: 80%; /* Adjust card width */
+  max-width: 600px; /* Max width */
+  margin: 0 auto; /* Center the card */
+  animation: fadeInUp 1s forwards; /* Fade-in animation */
+}
+
+
 .intro {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Horizontally center the content */
-    text-align: center; /* Center the text */
-    margin-top: 20px; /* Adjust the top margin as needed */
-    position: relative;
-    z-index: 1;
-    transition: transform 0.3s ease-in-out; /* Smooth transition when moving */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Horizontally center the content */
+  text-align: center; /* Center the text */
+  margin-top: 20px; /* Adjust the top margin as needed */
+  position: relative;
+  z-index: 1;
+  color: #ffffff; /* White text */
+  font-family: 'Arial', sans-serif; /* Font style */
+  font-size: 1.2rem; /* Adjusted font size */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+  transition: transform 0.3s ease-in-out; /* Smooth transition */
+  opacity: 0; /* Start with hidden state */
+  animation: fadeInUp 1s forwards; /* Fade-in and slide-up animation */
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
-  
-  /* Link styling */
-  .link {
-    color: blue;
-    cursor: pointer;
-    text-decoration: underline;
+  100% {
+    opacity: 1;
   }
-  
-  /* Styling for dropdown-container */
-  .dropdown-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Horizontally center the content */
-    justify-content: flex-start; /* Align content to the top */
-    padding: 20px;
-    max-width: 300px; /* Set max width */
-    margin: 0 auto; /* Center the container horizontally */
-    text-align: center; /* Center the text inside */
-    background-color: #fafafa; /* Light background color */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
-    transition: transform 0.3s ease-in-out; /* Smooth transition */
-    position: relative;
-    z-index: 1;
-    max-height: 400px; /* Set the max height to make it smaller */
-    overflow-y: auto; /* Add scroll if the content exceeds the max height */
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* Start lower */
   }
-  
-  /* Styling for dropdown header */
-  h3 {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: #333; /* Dark text color */
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* End at original position */
   }
-  
-  /* Styling for form fields */
-  .mat-form-field {
-    width: 100%; /* Make form fields stretch to container width */
-    margin-bottom: 16px; /* Space between fields */
+}
+
+/* Link styling */
+.link {
+  color: #ffcc00; /* Bright yellow */
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: #ffa500; /* Darker yellow on hover */
+}
+
+/* Styling for dropdown-container */
+.dropdown-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Horizontally center the content */
+  justify-content: flex-start; /* Align content to the top */
+  padding: 20px;
+  max-width: 300px; /* Set max width */
+  margin: 0 auto; /* Center the container horizontally */
+  text-align: center; /* Center the text inside */
+  background-color: #1e1e2f; /* Dark background color */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Prominent shadow */
+  transition: transform 0.3s ease-in-out; /* Smooth transition */
+  position: relative;
+  z-index: 1;
+  max-height: 400px; /* Set the max height */
+  overflow-y: auto; /* Add scroll if the content exceeds the max height */
+  opacity: 0; /* Start hidden */
+  animation: fadeInUp 1.5s forwards; /* Fade-in and slide-up animation */
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
   }
-  
-  .country-display input {
-    background-color: #f0f0f0; /* Light background for the readonly input */
+  100% {
+    transform: translateX(0);
   }
-  
-  /* Styling for mat-select */
-  .dropdown-field mat-select {
-    border-radius: 4px;
-  }
-  
-  /* Label styling */
-  mat-label {
-    font-size: 14px;
-    color: blue;
-  }
-  
-  /* Option styling */
-  .mat-option {
-    font-size: 14px;
-    padding: 8px 16px;
-  }
-  
-  /* Select trigger styling */
-  .mat-select-trigger {
-    font-size: 14px;
-  }
-  
+}
+
+/* Styling for dropdown header */
+h3 {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #ffcc00; /* Bright yellow header */
+  font-family: 'Georgia', serif; /* Font style */
+  animation: fadeIn 1s ease-out; /* Fade-in animation */
+}
+
+/* Styling for form fields */
+.mat-form-field {
+  width: 100%; /* Make form fields stretch to container width */
+  margin-bottom: 16px; /* Space between fields */
+  font-family: 'Roboto', sans-serif;
+  opacity: 0;
+  animation: fadeInUp 1.5s 0.3s forwards; /* Fade-in and slide-up animation with delay */
+}
+
+.country-display input {
+  background-color: #2e2e3f; /* Dark input background */
+  color: #ffffff; /* White text */
+  border-radius: 4px; /* Rounded corners */
+  padding: 8px;
+}
+
+/* Styling for mat-select */
+.dropdown-field mat-select {
+  border-radius: 6px;
+  background-color: #2e2e3f; /* Match input background */
+  color: #ffffff; /* White text */
+  opacity: 0;
+  animation: fadeInUp 1.5s 0.5s forwards; /* Fade-in with delay */
+}
+
+/* Label styling */
+mat-label {
+  font-size: 16px;
+  color: #ffcc00; /* Bright yellow labels */
+  font-family: 'Arial', sans-serif;
+  animation: fadeIn 1s ease-out; /* Fade-in label */
+}
+
+/* Option styling */
+.mat-option {
+  font-size: 14px;
+  padding: 8px 16px;
+  color: #ffffff; /* White text for options */
+  background-color: #1e1e2f; /* Dark background for options */
+  transition: background-color 0.3s ease;
+}
+
+.mat-option:hover {
+  background-color: #ffcc00; /* Highlight on hover */
+  color: #000000; /* Black text on hover */
+  animation: none; /* Remove animation on hover */
+}
+
+/* Select trigger styling */
+.mat-select-trigger {
+  font-size: 16px;
+  color: #ffffff; /* White text */
+}

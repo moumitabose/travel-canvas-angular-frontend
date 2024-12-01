@@ -1,4 +1,8 @@
+<div class="homepage-container">
+
 <div class="intro">
+
+  <mat-card class="intro-card">
     <h2>Explore the world at your pace.</h2>
     <p>
       Select a 
@@ -7,7 +11,9 @@
       <span class="link" (click)="goToCountry()">country</span> 
       to start your journey.
     </p>
+    </mat-card>
   </div>
+  
 
   <div class="dropdown-container" *ngIf="cityDropdown">
     <h3>Choose City</h3>
@@ -26,3 +32,4 @@
       <input matInput [value]="selectedCountry" readonly />
     </mat-form-field>
   </div>
+</div>
