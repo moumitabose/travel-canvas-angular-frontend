@@ -1,0 +1,114 @@
+/* Heading Styling */
+.heading-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: fadeIn 1s ease-out; /* Animation for heading */
+  }
+  
+  /* Animation for Heading */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Main Card Container */
+  .login-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+    height: calc(100vh - 100px);
+  }
+  
+  /* MatCard Styling */
+  .login-card {
+    display: flex;
+    width: 70%;
+    height: 80%;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Ensures the image and form are contained within the card */
+  }
+  
+  /* Login Form Section */
+  .login-form-container {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f2f6; /* Updated background color for the form */
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #2c3e50;
+  }
+  
+  .form-field {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+  
+  .login-button {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #3498db;
+    color: white;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-button:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Image Section */
+  .image-container {
+    flex: 1;
+    background-color: #ecf0f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensures anything outside the container is hidden */
+  }
+  
+  .image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    object-fit: cover; /* Ensures the image covers the container area */
+    object-position: top; /* Crops the bottom of the image */
+    animation: scaleUp 1s ease-out; /* Animation for the image */
+  }
+  
+  /* Image Animation */
+  @keyframes scaleUp {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  

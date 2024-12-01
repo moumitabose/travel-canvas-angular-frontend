@@ -44,6 +44,7 @@ import { HomePageComponent } from './Home-Page/home-page/home-page.component';
 import { HeaderComponent } from './Home-Page/header/header.component';
 import { ShowPackageListComponent } from './Packages/show-package-list/show-package-list.component';
 import { ChooseDestinationComponent } from './Destination/choose-destination/choose-destination.component';
+import { LoginFormComponent } from './Login/login-form/login-form.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { ChooseDestinationComponent } from './Destination/choose-destination/cho
     HeaderComponent,
     ShowPackageListComponent,
     ChooseDestinationComponent,
+    LoginFormComponent,
     
   ],
   imports: [

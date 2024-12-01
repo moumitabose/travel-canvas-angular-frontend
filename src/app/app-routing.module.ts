@@ -5,13 +5,17 @@ import { HomePageComponent } from './Home-Page/home-page/home-page.component';
 import { ShowPackageListComponent } from './Packages/show-package-list/show-package-list.component';
 import { ChooseDestinationComponent } from './Destination/choose-destination/choose-destination.component';
 import { QueryParameterGuard } from './Guard/query-parameter.guard';
+import { LoginFormComponent } from './Login/login-form/login-form.component';
 
 
 const routes: Routes = [
+  { path: '', redirectTo: '/travelCanvas', pathMatch: 'full' },
   { path: 'travelCanvas', component: HomePageComponent },
+  {path:'login',component:LoginFormComponent},
   { path: 'userCreation', component: SaveUserFormComponent },
   { path: 'search', component: ChooseDestinationComponent },
-  { path: 'package', component: ShowPackageListComponent , canActivate: [QueryParameterGuard]},
+  { path: 'package', component: ShowPackageListComponent },
+  // { path: 'package', component: ShowPackageListComponent , canActivate: [QueryParameterGuard]},
 ];
 
 @NgModule({
