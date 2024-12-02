@@ -1,5 +1,14 @@
 <div class="city-info">
     <h2>City: {{ city }}</h2>
     <p>Country: {{ country }}</p>
+    <p>destinationid: {{ destinationid }}</p>
   </div>
   
+  <div *ngIf="imageData; else noImage">
+    <h3>Destination Image</h3>
+    <img [src]="'data:image/jpeg;base64,' + imageData" alt="Destination Image" style="max-width: 100%; height: auto;">
+  </div>
+
+  <ng-template #noImage>
+    <p>No image available for the selected destination.</p>
+  </ng-template>
