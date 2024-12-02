@@ -6,15 +6,17 @@ import { ShowPackageListComponent } from './Packages/show-package-list/show-pack
 import { ChooseDestinationComponent } from './Destination/choose-destination/choose-destination.component';
 import { QueryParameterGuard } from './Guard/query-parameter.guard';
 import { LoginFormComponent } from './Login/login-form/login-form.component';
+import { SaveImageComponent } from './Image/save-image/save-image.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/travelCanvas', pathMatch: 'full' },
   { path: 'travelCanvas', component: HomePageComponent },
-  {path:'login',component:LoginFormComponent},
+  { path: 'login', component: LoginFormComponent },
   { path: 'userCreation', component: SaveUserFormComponent },
   { path: 'search', component: ChooseDestinationComponent },
   { path: 'package', component: ShowPackageListComponent },
+  { path: 'uploadImage', component: SaveImageComponent },
   // { path: 'package', component: ShowPackageListComponent , canActivate: [QueryParameterGuard]},
 ];
 
