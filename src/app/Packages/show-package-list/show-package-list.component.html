@@ -1,14 +1,18 @@
-<div class="city-info">
-    <h2>City: {{ city }}</h2>
-    <p>Country: {{ country }}</p>
-    <p>destinationid: {{ destinationid }}</p>
+<div class="banner">
+  <img
+    *ngIf="imageData"
+    [src]="'data:image/jpeg;base64,' + imageData"
+    alt="Destination Image"
+    class="banner-image"
+  />
+  <div class="city-info">
+    <h2>City: {{ city }} || {{ country }}</h2>
   </div>
-  
-  <div *ngIf="imageData; else noImage">
-    <h3>Destination Image</h3>
-    <img [src]="'data:image/jpeg;base64,' + imageData" alt="Destination Image" style="max-width: 100%; height: auto;">
-  </div>
+</div>
 
-  <ng-template #noImage>
-    <p>No image available for the selected destination.</p>
-  </ng-template>
+
+<div class="image-container">
+  <mat-card *ngFor="let image of imageList" class="image-card">
+    <img [src]="'data:image/jpeg;base64,' + image" alt="Destination Image" class="card-image" />
+  </mat-card>
+</div>

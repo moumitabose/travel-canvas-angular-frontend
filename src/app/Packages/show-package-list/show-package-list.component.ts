@@ -20,6 +20,7 @@ export class ShowPackageListComponent implements OnInit {
   country: string = '';
   destinationid:  number | null = null;
   imageData: string | null = null;
+  imageList: string[] = []; // Array to store multiple images
 
   constructor(private route: ActivatedRoute,private router: Router,private Svc: TravelCanvasBackendServiceService,) {}
 
@@ -31,6 +32,7 @@ export class ShowPackageListComponent implements OnInit {
       //this.lockQueryParams();
 
       this.getImageDetailsByDestinationId();
+      this.getAllSubImageDetailsByDestinationId();
     });
   }
 
@@ -41,6 +43,7 @@ getImageDetailsByDestinationId() {
     var payload = { destinationid: this.destinationid };
 
     this.Svc.getImageDetailsByDestinationId(payload).subscribe(data => {
+
       if (data && data.imageData) {
         this.imageData = atob(data.imageData); // Decoding Base64
       }
@@ -50,7 +53,23 @@ getImageDetailsByDestinationId() {
   }
 
 
+  getAllSubImageDetailsByDestinationId() {
+    const payload = { destinationid: this.destinationid };
+  
+    this.Svc.getAllSubImageDetailsByDestinationId(payload).subscribe(data => {
+      if (Array.isArray(data)) {
+        this.imageList = data
+          .filter(item => item.imageSubData) // Ensure each item has imageSubData
+          .map(item => item.imageSubData); // Map to the Base64 data
+      } else {
+        console.error('Unexpected response format:', data);
+      }
+    }, error => {
+      console.error('Error fetching images:', error);
+    });
+  }
 
+  //getAllSubImageDetailsByDestinationId
 
 
 

@@ -46,6 +46,7 @@ import { ShowPackageListComponent } from './Packages/show-package-list/show-pack
 import { ChooseDestinationComponent } from './Destination/choose-destination/choose-destination.component';
 import { LoginFormComponent } from './Login/login-form/login-form.component';
 import { SaveImageComponent } from './Image/save-image/save-image.component';
+import { SaveImageSubComponent } from './Image/save-image-sub/save-image-sub.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { SaveImageComponent } from './Image/save-image/save-image.component';
     ChooseDestinationComponent,
     LoginFormComponent,
     SaveImageComponent,
+    SaveImageSubComponent,
     
   ],
   imports: [

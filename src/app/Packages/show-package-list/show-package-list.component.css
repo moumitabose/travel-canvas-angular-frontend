@@ -1,15 +1,29 @@
+.banner {
+  position: relative;
+  height: 25vh; /* Takes up 1/4th of the viewport height */
+  width: 100%; /* Full width of the viewport */
+  overflow: hidden;
+}
+
+.banner-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Extends across the full width */
+  height: 100%; /* Stretches proportionally across the container */
+  object-fit: cover; /* Ensures no distortion while covering the area */
+}
+
 .city-info {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .city-info h2 {
-    font-size: 24px;
-    color: #333;
-  }
-  
-  .city-info p {
-    font-size: 18px;
-    color: #666;
-  }
-  
+  position: absolute;
+  top: 50%; /* Centers vertically */
+  left: 50%; /* Centers horizontally */
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for readability */
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  width: 90%; /* Optional: Adjust for text width */
+  max-width: 600px; /* Limits the text box size for readability */
+}

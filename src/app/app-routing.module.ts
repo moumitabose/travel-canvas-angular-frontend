@@ -7,6 +7,7 @@ import { ChooseDestinationComponent } from './Destination/choose-destination/cho
 import { QueryParameterGuard } from './Guard/query-parameter.guard';
 import { LoginFormComponent } from './Login/login-form/login-form.component';
 import { SaveImageComponent } from './Image/save-image/save-image.component';
+import { SaveImageSubComponent } from './Image/save-image-sub/save-image-sub.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'search', component: ChooseDestinationComponent },
   { path: 'package', component: ShowPackageListComponent },
   { path: 'uploadImage', component: SaveImageComponent },
+  {path:'uploadSubImage', component:SaveImageSubComponent},
   // { path: 'package', component: ShowPackageListComponent , canActivate: [QueryParameterGuard]},
 ];
 

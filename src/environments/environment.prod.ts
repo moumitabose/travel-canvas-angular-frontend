@@ -21,10 +21,14 @@ export const environment = {
 
     getImageDetailsByDestinationId: baseServiceUrl + "getImageDetailsByDestinationId",
 
-    uploadImage: baseServiceUrl + "getImageDetailsByDestinationId",
+    uploadImage: baseServiceUrl + "uploadImage",
 
 
+    ///////////////////////////////////////////SUB-IMAGE//////////////////////////////////////////////////////////////////
 
+    uploadSubImage: baseServiceUrl + "uploadSubImage",
+
+    getAllSubImageDetailsByDestinationId: baseServiceUrl + "getAllSubImageDetailsByDestinationId",
 
   },
 };

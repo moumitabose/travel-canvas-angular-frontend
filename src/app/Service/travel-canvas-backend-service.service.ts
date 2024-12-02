@@ -56,8 +56,27 @@ export class TravelCanvasBackendServiceService {
   }
 
 
+///////////////////////////////////////////SUB-IMAGE//////////////////////////////////////////////////////////////////
+
+uploadSubImage(data: any): Observable<any> {
+  return this.http.post(`${environment.url.uploadSubImage}`, data,
+    {
+      headers: new HttpHeaders({
+        'custom-header': 'application/json'
+      })
+    });
+}
 
 
+
+getAllSubImageDetailsByDestinationId(data: any): Observable<any> {
+  return this.http.post(`${environment.url.getAllSubImageDetailsByDestinationId}`, data,
+    {
+      headers: new HttpHeaders({
+        'custom-header': 'application/json'
+      })
+    });
+}
 
 
 }
