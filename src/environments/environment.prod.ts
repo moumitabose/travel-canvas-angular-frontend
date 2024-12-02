@@ -13,5 +13,18 @@ export const environment = {
     ///////////////////////////////////////////DESTINATION//////////////////////////////////////////////////////////////////
 
     getAllDestinationDetails: baseServiceUrl + "getAllDestinationDetails",
+
+
+
+    ///////////////////////////////////////////IMAGE//////////////////////////////////////////////////////////////////
+
+
+    getImageDetailsByDestinationId: baseServiceUrl + "getImageDetailsByDestinationId",
+
+    uploadImage: baseServiceUrl + "getImageDetailsByDestinationId",
+
+
+
+
   },
 };

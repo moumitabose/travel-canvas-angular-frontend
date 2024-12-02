@@ -12,26 +12,52 @@ export class TravelCanvasBackendServiceService {
 
   servicedata = true;
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
+  }
+
+  ///////////////////////////////////////////DESTINATION//////////////////////////////////////////////////////////////////
+
+
+  getAllDestinationDetails() {
+    return this.http.get<any>(environment.url.getAllDestinationDetails)
   }
 
 
-    getAllDestinationDetails() {
-      return this.http.get<any>(environment.url.getAllDestinationDetails)
-    }
-  
-  
-    // getAllDetailsByEmployeeid(data: any): Observable<any> {
-    //   return this.http.post(`${environment.url.getAllDetailsByEmployeeid}`, data,
-    //     {
-    //       headers: new HttpHeaders({
-    //         'custom-header': 'application/json'
-    //       })
-    //     });
-    // }
+  // getAllDetailsByEmployeeid(data: any): Observable<any> {
+  //   return this.http.post(`${environment.url.getAllDetailsByEmployeeid}`, data,
+  //     {
+  //       headers: new HttpHeaders({
+  //         'custom-header': 'application/json'
+  //       })
+  //     });
+  // }
+
+  ///////////////////////////////////////////IMAGE//////////////////////////////////////////////////////////////////
 
 
-  
+  getImageDetailsByDestinationId(data: any): Observable<any> {
+    return this.http.post(`${environment.url.getImageDetailsByDestinationId}`, data,
+      {
+        headers: new HttpHeaders({
+          'custom-header': 'application/json'
+        })
+      });
+  }
 
-  
+
+
+  uploadImage(data: any): Observable<any> {
+    return this.http.post(`${environment.url.uploadImage}`, data,
+      {
+        headers: new HttpHeaders({
+          'custom-header': 'application/json'
+        })
+      });
+  }
+
+
+
+
+
+
 }

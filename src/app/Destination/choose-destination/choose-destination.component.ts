@@ -21,6 +21,7 @@ export class ChooseDestinationComponent implements OnInit {
   selectedCityId: number | null = null; // Selected city ID
   selectedCountry: string = ''; // Corresponding country name
   selectedCity: string = ''; // Selected city name
+  selectedDestinationId: number | null = null;
 
   cityDropdown:boolean=false;
 
@@ -80,6 +81,26 @@ export class ChooseDestinationComponent implements OnInit {
   // }
 
 
+  // onCityChange(): void {
+  //   const selectedDestination = this.destinations.find(
+  //     (dest) => dest.cityid === this.selectedCityId
+  //   );
+  //   if (selectedDestination) {
+  //     this.selectedCity = selectedDestination.cityname;
+  //     this.selectedCountry = selectedDestination.countryname;
+      
+  //     // Navigate to the new page with city and country as query parameters
+  //     this.router.navigate(['/package'], {
+  //       queryParams: { city: this.selectedCity, country: this.selectedCountry},
+  //       queryParamsHandling: 'merge'
+  //     });
+  //   } else {
+  //     this.selectedCity = '';
+  //     this.selectedCountry = '';
+  //   }
+  // }
+
+
   onCityChange(): void {
     const selectedDestination = this.destinations.find(
       (dest) => dest.cityid === this.selectedCityId
@@ -87,17 +108,23 @@ export class ChooseDestinationComponent implements OnInit {
     if (selectedDestination) {
       this.selectedCity = selectedDestination.cityname;
       this.selectedCountry = selectedDestination.countryname;
-      
-      // Navigate to the new page with city and country as query parameters
+      this.selectedDestinationId = selectedDestination.destinationid;
+  
+      // Navigate to the new page with city, country, and destinationid as query parameters
       this.router.navigate(['/package'], {
-        queryParams: { city: this.selectedCity, country: this.selectedCountry },
-        queryParamsHandling: 'merge'
+        queryParams: {
+          city: this.selectedCity,
+          country: this.selectedCountry,
+          destinationid: this.selectedDestinationId,
+        },
+        queryParamsHandling: 'merge',
       });
     } else {
       this.selectedCity = '';
       this.selectedCountry = '';
     }
   }
+  
   
   // this.router.navigate([], {
   //   queryParams: { city: this.selectedCity, country: this.selectedCountry },
