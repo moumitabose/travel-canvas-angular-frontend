@@ -1,8 +1,11 @@
 <mat-toolbar color="primary" class="header">
     <span class="app-title">My Application</span>
+    <div *ngIf="loginData">
+      Welcome, {{ loginData.username }}!
+    </div>
     <span class="spacer"></span>
     <button mat-button [routerLink]="['/travelCanvas']">Home </button>
     <button mat-button>About Us</button>
     <button mat-button>Contact</button>
-    <mat-icon class="profile-icon">account_circle</mat-icon>
+    <mat-icon class="profile-icon" [routerLink]="['/login']">account_circle</mat-icon>
   </mat-toolbar>

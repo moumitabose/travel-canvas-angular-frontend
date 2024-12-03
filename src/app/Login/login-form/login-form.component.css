@@ -1,114 +1,134 @@
-/* Heading Styling */
-.heading-container {
-    text-align: center;
-    margin-top: 50px;
+:host {
+  display: block;
+  height: 82.6vh;
+  background-color: lightblue;
+  padding-top: 3%;
+  animation: fadeInHost 1s ease-in-out;
+}
+
+/* Styling for the login card */
+.login-card {
+  max-width: 600px;
+  height: 300px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #ff7eb3, #ff758c); /* Gradient background */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: fadeInCard 1s ease-in-out;
+}
+
+/* Flex container for the login form and image */
+.login-container {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  animation: slideIn 1s ease-in-out;
+}
+
+/* Form container */
+.form-container {
+  width: 45%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: fadeInForm 1s ease-in-out;
+}
+
+/* Buttons with different colors */
+.form-container button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  color: white;
+  background-color: #4caf50; /* Green button */
+  transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+/* Add a secondary button style */
+.form-container .secondary-button {
+  background-color: #007bff; /* Blue button */
+}
+
+.form-container .secondary-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Image container */
+.image-container {
+  width: 55%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  animation: fadeInImage 1s ease-in-out;
+}
+
+.image-container img {
+  max-width: 100%;
+  border-radius: 10px;
+  height: auto;
+}
+
+/* Animations for fade-in effects */
+@keyframes fadeInHost {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  
-  h1 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #2c3e50;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    animation: fadeIn 1s ease-out; /* Animation for heading */
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  /* Animation for Heading */
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-      transform: translateY(-50px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
+}
+
+@keyframes fadeInCard {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
   }
-  
-  /* Main Card Container */
-  .login-card-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color: red; */
-    height: calc(100vh - 100px);
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
-  
-  /* MatCard Styling */
-  .login-card {
-    display: flex;
-    width: 70%;
-    height: 80%;
-    border-radius: 10px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-    overflow: hidden; /* Ensures the image and form are contained within the card */
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%);
   }
-  
-  /* Login Form Section */
-  .login-form-container {
-    flex: 1;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #f1f2f6; /* Updated background color for the form */
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
-  
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 30px;
-    color: #2c3e50;
+}
+
+@keyframes fadeInForm {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .form-field {
-    width: 80%;
-    margin-bottom: 20px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .login-button {
-    width: 80%;
-    padding: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    background-color: #3498db;
-    color: white;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease;
+}
+
+@keyframes fadeInImage {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
   }
-  
-  .login-button:hover {
-    background-color: #2980b9;
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
-  
-  /* Image Section */
-  .image-container {
-    flex: 1;
-    background-color: #ecf0f1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Ensures anything outside the container is hidden */
-  }
-  
-  .image-container img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    object-fit: cover; /* Ensures the image covers the container area */
-    object-position: top; /* Crops the bottom of the image */
-    animation: scaleUp 1s ease-out; /* Animation for the image */
-  }
-  
-  /* Image Animation */
-  @keyframes scaleUp {
-    0% {
-      transform: scale(0.8);
-      opacity: 0;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-  
+}

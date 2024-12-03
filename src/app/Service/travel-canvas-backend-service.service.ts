@@ -15,6 +15,29 @@ export class TravelCanvasBackendServiceService {
   constructor(private http: HttpClient) {
   }
 
+  ///////////////////////////////////////////LOGIN//////////////////////////////////////////////////////////////////
+
+  login(data: any): Observable<any> {
+    return this.http.post(`${environment.url.login}`, data,
+      {
+        headers: new HttpHeaders({
+          'custom-header': 'application/json'
+        })
+      });
+  }
+
+   ///////////////////////////////////////////ROLE//////////////////////////////////////////////////////////////////
+
+
+   saveRoledetails(data: any): Observable<any> {
+    return this.http.post(`${environment.url.saveRoledetails}`, data,
+      {
+        headers: new HttpHeaders({
+          'custom-header': 'application/json'
+        })
+      });
+  }
+
   ///////////////////////////////////////////DESTINATION//////////////////////////////////////////////////////////////////
 
 

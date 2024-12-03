@@ -8,17 +8,21 @@ import { QueryParameterGuard } from './Guard/query-parameter.guard';
 import { LoginFormComponent } from './Login/login-form/login-form.component';
 import { SaveImageComponent } from './Image/save-image/save-image.component';
 import { SaveImageSubComponent } from './Image/save-image-sub/save-image-sub.component';
+import { SaveRoleComponent } from './Role/save-role/save-role.component';
+import { RoleListComponent } from './Role/save-role/role-list/role-list.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/travelCanvas', pathMatch: 'full' },
   { path: 'travelCanvas', component: HomePageComponent },
   { path: 'login', component: LoginFormComponent },
+  { path: 'roleCreation', component: SaveRoleComponent },
+  { path: 'roleList', component: RoleListComponent },
   { path: 'userCreation', component: SaveUserFormComponent },
   { path: 'search', component: ChooseDestinationComponent },
   { path: 'package', component: ShowPackageListComponent },
   { path: 'uploadImage', component: SaveImageComponent },
-  {path:'uploadSubImage', component:SaveImageSubComponent},
+  { path: 'uploadSubImage', component: SaveImageSubComponent },
   // { path: 'package', component: ShowPackageListComponent , canActivate: [QueryParameterGuard]},
 ];
 
