@@ -41,21 +41,12 @@ export class LoginFormComponent implements OnInit {
      };
 
      this.Svc.login(payload).subscribe(data => {
-
       console.log(data);
-
       this.authService.setLoginData(data);
-
-      //use snackbar
-
-      //use route
-
-     })
+      this.router.navigate(['/travelCanvas']); // Redirect on successful login
+    });
   }
 
-  // onLoginSuccess(responseData: any) {
-  //   // Assuming responseData contains the login details
-  //   this.authService.setLoginData(responseData);
-  // }
+  
 
 }

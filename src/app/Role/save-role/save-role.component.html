@@ -21,34 +21,16 @@
           <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
             <mat-label>Created By </mat-label>
             <input matInput  placeholder="createby" formControlName="createby"
-          readonly  style="margin-top: 3%">
+            style="margin-top: 3%">
           </mat-form-field>
+
+          <button mat-raised-button color="primary" (click)="saveRole()">Save</button>
 
       </div>
       
 
    
- 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <pre>
-        {{SaveRoleForm.value|json}}
-    </pre>
 
 
 </form>
