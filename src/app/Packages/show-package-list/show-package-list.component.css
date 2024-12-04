@@ -27,3 +27,32 @@
   width: 90%; /* Optional: Adjust for text width */
   max-width: 600px; /* Limits the text box size for readability */
 }
+
+
+.image-container {
+  display: flex;
+  gap: 15px; /* Adds spacing between the images */
+  justify-content: flex-start; /* Aligns images to the left */
+  overflow-x: auto; /* Enables horizontal scrolling if images exceed the container width */
+  white-space: nowrap; /* Ensures items stay on the same line */
+  padding: 10px; /* Optional: Adds padding inside the container */
+}
+
+.image-card {
+  flex: 0 0 auto; /* Prevents flex items from shrinking or growing */
+  width: 300px; /* Increases the card size */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds a shadow effect for better visuals */
+  border-radius: 5px; /* Optional: Rounds the corners of the card */
+  overflow: hidden; /* Ensures child elements stay within the card */
+}
+
+.card-image {
+  width: 100%; /* Ensures images fit within their container */
+  height: auto; /* Maintains aspect ratio */
+  display: block;
+}
+
+
+
+
+

@@ -20,8 +20,47 @@
           <mat-label>Password</mat-label>
           <input matInput id="password" placeholder="Password" formControlName="password" type="password" />
         </mat-form-field>
-      </div>
       
+
+      <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+        <mat-label>Roles</mat-label>
+        <mat-select [(value)]="selectedRoleId" (selectionChange)="onRoleChange($event)">
+          <mat-option *ngFor="let role of roles" [value]="role">
+            {{ role.rolename }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+  
+        <input matInput formControlName="roleid" readonly  hidden/>
+      
+      
+      <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+        <mat-label>Selected Role Name</mat-label>
+        <input matInput formControlName="rolename" readonly />
+      </mat-form-field>
+
+
+      <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+        <mat-label>Country</mat-label>
+        <mat-select [(value)]="selectedCountryId" (selectionChange)="onCountryChange($event)">
+          <mat-option *ngFor="let country of countries" [value]="country">
+            {{ country.countryname }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+  
+        <input matInput formControlName="countryid" readonly  hidden/>
+      
+      
+      <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+        <mat-label>Selected Country Name</mat-label>
+        <input matInput formControlName="countryname" readonly />
+      </mat-form-field>
+      
+    </div>
+
 
     <div class="col-md-6 offset-md-3">
 
@@ -35,26 +74,7 @@
 
 
 
-            <!-- <div class="form-floating">
-                <div class="d-flex">
-                    <label class="labeltext" style="position: relative; top: 10px;  margin-top: 3%">User Role </label>
-
-
-
-                    <mat-form-field style="width: 90%;margin-top: 3%;height: 70%;">
-
-
-                        <mat-select formControlName="sysuserroleid" multiple >
-                            <mat-option *ngFor="let sysuserrole of sysuserroles; let i = index"
-                                 [value]="sysuserrole.sysuserroleid">
-                                {{sysuserrole.userroledescription}}</mat-option>
-                        </mat-select>
-
-                    </mat-form-field>
-
-
-                </div>
-            </div> -->
+           
 
 
          

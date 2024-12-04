@@ -10,6 +10,7 @@ import { UntypedFormBuilder, UntypedFormGroup, FormBuilder, FormArray, Validator
 
 import { MatPaginator } from '@angular/material/paginator';
 import { Observable } from 'rxjs';
+import { TravelCanvasBackendServiceService } from 'src/app/Service/travel-canvas-backend-service.service';
 
 
 
@@ -22,9 +23,16 @@ export class SaveUserFormComponent implements OnInit {
 
   SaveUserForm!: UntypedFormGroup
 
+  roles: any[] = []; // Data from backend
+  countries: any[] = []; // Data from backend
+
+  selectedRoleId: number | null = null; // Selected Role ID
+  selectedCountryId: number | null = null; // Selected Role ID
 
 
-  constructor(private router: Router, private fb: UntypedFormBuilder, private _snackBar: MatSnackBar,) 
+
+  constructor(private router: Router, 
+    private Svc: TravelCanvasBackendServiceService, private fb: UntypedFormBuilder, private _snackBar: MatSnackBar,) 
     {
   }
 
@@ -35,8 +43,34 @@ export class SaveUserFormComponent implements OnInit {
       name: [''],
       email:[''],
       password: [''],
+      roleid: [''],
+      rolename:[''],
+      countryid:[''],
+      countryname:[''],
 
 
+    })
+
+    this.getAllRoles();
+    this.getAllCountries();
+  }
+
+  getAllRoles()
+  {
+    this.Svc.getAllRoles().subscribe(data => {
+
+      console.log(data);
+      this.roles = data;
+
+    })
+  }
+
+  getAllCountries ()
+  {
+    this.Svc.getAllCountries().subscribe(data => {
+
+      console.log(data);
+      this.countries = data;
 
     })
   }
@@ -49,6 +83,22 @@ export class SaveUserFormComponent implements OnInit {
   reset()
   {
 
+  }
+
+  onRoleChange(event: any): void {
+    const selectedRole = event.value;
+    this.SaveUserForm.patchValue({
+      roleid: selectedRole.roleid,
+      rolename: selectedRole.rolename
+    });
+  }
+
+  onCountryChange(event: any): void {
+    const selectedCountryId = event.value;
+    this.SaveUserForm.patchValue({
+      countryid: selectedCountryId.countryid,
+      countryname: selectedCountryId.countryname
+    });
   }
 
 }

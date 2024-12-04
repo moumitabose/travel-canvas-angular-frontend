@@ -26,10 +26,10 @@ export class TravelCanvasBackendServiceService {
       });
   }
 
-   ///////////////////////////////////////////ROLE//////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////ROLE//////////////////////////////////////////////////////////////////
 
 
-   saveRoledetails(data: any): Observable<any> {
+  saveRoledetails(data: any): Observable<any> {
     return this.http.post(`${environment.url.saveRoledetails}`, data,
       {
         headers: new HttpHeaders({
@@ -37,6 +37,18 @@ export class TravelCanvasBackendServiceService {
         })
       });
   }
+
+  getAllRoles() {
+    return this.http.get<any>(environment.url.getAllRoles)
+  }
+
+  ///////////////////////////////////////////COUNTRY//////////////////////////////////////////////////////////////////
+
+
+  getAllCountries() {
+    return this.http.get<any>(environment.url.getAllCountries)
+  }
+
 
   ///////////////////////////////////////////DESTINATION//////////////////////////////////////////////////////////////////
 
@@ -79,27 +91,27 @@ export class TravelCanvasBackendServiceService {
   }
 
 
-///////////////////////////////////////////SUB-IMAGE//////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////SUB-IMAGE//////////////////////////////////////////////////////////////////
 
-uploadSubImage(data: any): Observable<any> {
-  return this.http.post(`${environment.url.uploadSubImage}`, data,
-    {
-      headers: new HttpHeaders({
-        'custom-header': 'application/json'
-      })
-    });
-}
+  uploadSubImage(data: any): Observable<any> {
+    return this.http.post(`${environment.url.uploadSubImage}`, data,
+      {
+        headers: new HttpHeaders({
+          'custom-header': 'application/json'
+        })
+      });
+  }
 
 
 
-getAllSubImageDetailsByDestinationId(data: any): Observable<any> {
-  return this.http.post(`${environment.url.getAllSubImageDetailsByDestinationId}`, data,
-    {
-      headers: new HttpHeaders({
-        'custom-header': 'application/json'
-      })
-    });
-}
+  getAllSubImageDetailsByDestinationId(data: any): Observable<any> {
+    return this.http.post(`${environment.url.getAllSubImageDetailsByDestinationId}`, data,
+      {
+        headers: new HttpHeaders({
+          'custom-header': 'application/json'
+        })
+      });
+  }
 
 
 }
