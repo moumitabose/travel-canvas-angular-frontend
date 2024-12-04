@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="toggleMenu()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>My Stylish Menu</span>
+    <span class="spacer"></span>
+    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="onHomeClick()">Home</button>
+
+    </mat-menu>
+  </mat-toolbar>
+  
