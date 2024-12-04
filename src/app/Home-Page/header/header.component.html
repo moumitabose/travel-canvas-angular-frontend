@@ -1,8 +1,11 @@
 <mat-toolbar color="primary" class="header">
     <span class="app-title">My Application</span>
+
+    <span class="spacer"></span>
     <div *ngIf="loginData">
       Welcome, {{ loginData.username }}!
     </div>
+<<<<<<< HEAD
     <span class="spacer"></span>
     <!-- <button mat-button [matMenuTriggerFor]="menu" class="menu-trigger">Menu</button>
     <mat-menu #menu="matMenu">
@@ -60,6 +63,8 @@
 
 
 
+=======
+>>>>>>> 7f7352eee5c640b2a91cff2d2be809d295c8f2be
     <button mat-button [routerLink]="['/travelCanvas']">Home </button>
     <button mat-button>About Us</button>
     <button mat-button>Contact</button>

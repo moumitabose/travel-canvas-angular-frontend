@@ -48,4 +48,20 @@ export class SaveRoleComponent implements OnInit {
     this.currentDateTime = this.todaysDate + "T" + this.startTime.toString();
   }
 
+  saveRole()
+  {
+    var payload = { 
+      
+      rolename: this.SaveRoleForm.controls['rolename'].value,
+      createdt: this.SaveRoleForm.controls['createdt'].value,
+      createby: this.SaveRoleForm.controls['createby'].value,
+      activeflag:'Y'
+     };
+
+     this.Svc.saveRoledetails(payload).subscribe(data => {
+
+      console.log(data);
+     });
+  }
+
 }
