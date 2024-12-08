@@ -42,6 +42,19 @@ export class TravelCanvasBackendServiceService {
     return this.http.get<any>(environment.url.getAllRoles)
   }
 
+  getAllRoleDetails() {
+    return this.http.get<any>(environment.url.getAllRoleDetails)
+  }
+
+  updateRoledetails(data: any): Observable<any> {
+    return this.http.post(`${environment.url.updateRoledetails}`, data,
+      {
+        headers: new HttpHeaders({
+          'custom-header': 'application/json'
+        })
+      });
+  }
+
   ///////////////////////////////////////////COUNTRY//////////////////////////////////////////////////////////////////
 
 
@@ -58,14 +71,18 @@ export class TravelCanvasBackendServiceService {
   }
 
 
-  // getAllDetailsByEmployeeid(data: any): Observable<any> {
-  //   return this.http.post(`${environment.url.getAllDetailsByEmployeeid}`, data,
-  //     {
-  //       headers: new HttpHeaders({
-  //         'custom-header': 'application/json'
-  //       })
-  //     });
-  // }
+
+  ///////////////////////////////////////////DESTINATION PACKAGE////////////////////////////////////////////////////////////////////
+
+
+  saveDestinationPackageDetails(data: any): Observable<any> {
+    return this.http.post(`${environment.url.saveDestinationPackageDetails}`, data,
+      {
+        headers: new HttpHeaders({
+          'custom-header': 'application/json'
+        })
+      });
+  }
 
   ///////////////////////////////////////////IMAGE//////////////////////////////////////////////////////////////////
 
@@ -106,6 +123,16 @@ export class TravelCanvasBackendServiceService {
 
   getAllSubImageDetailsByDestinationId(data: any): Observable<any> {
     return this.http.post(`${environment.url.getAllSubImageDetailsByDestinationId}`, data,
+      {
+        headers: new HttpHeaders({
+          'custom-header': 'application/json'
+        })
+      });
+  }
+
+
+  getAllPackageDetailsByDestinationId(data: any): Observable<any> {
+    return this.http.post(`${environment.url.getAllPackageDetailsByDestinationId}`, data,
       {
         headers: new HttpHeaders({
           'custom-header': 'application/json'

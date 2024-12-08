@@ -10,6 +10,7 @@ import { SaveImageComponent } from './Image/save-image/save-image.component';
 import { SaveImageSubComponent } from './Image/save-image-sub/save-image-sub.component';
 import { SaveRoleComponent } from './Role/save-role/save-role.component';
 import { RoleListComponent } from './Role/role-list/role-list.component';
+import { SavePackageComponent } from './Packages/save-package/save-package.component';
 
 
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'userCreation', component: SaveUserFormComponent },
   { path: 'search', component: ChooseDestinationComponent },
   { path: 'package', component: ShowPackageListComponent },
+  { path: 'savePacakage', component: SavePackageComponent },
   { path: 'uploadImage', component: SaveImageComponent },
   { path: 'uploadSubImage', component: SaveImageSubComponent },
   // { path: 'package', component: ShowPackageListComponent , canActivate: [QueryParameterGuard]},

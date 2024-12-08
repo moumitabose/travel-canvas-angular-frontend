@@ -18,28 +18,31 @@ export class ShowPackageListComponent implements OnInit {
 
   city: string = '';
   country: string = '';
-  destinationid:  number | null = null;
+  destinationid: number | null = null;
   imageData: string | null = null;
-  imageList: string[] = []; // Array to store multiple images
+  imageList: string[] = []; // Array to store multiple 
+  packageDetails: { noofdays: number; noofnight: number }[] = [];
 
-  constructor(private route: ActivatedRoute,private router: Router,private Svc: TravelCanvasBackendServiceService,) {}
+
+  constructor(private route: ActivatedRoute, private router: Router, private Svc: TravelCanvasBackendServiceService,) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.city = params['city'];
       this.country = params['country'];
-      this.destinationid=params['destinationid'];
+      this.destinationid = params['destinationid'];
       //this.lockQueryParams();
 
       this.getImageDetailsByDestinationId();
       this.getAllSubImageDetailsByDestinationId();
+      this.getAllPackageDetailsByDestinationId();
     });
   }
 
 
 
 
-getImageDetailsByDestinationId() {
+  getImageDetailsByDestinationId() {
     var payload = { destinationid: this.destinationid };
 
     this.Svc.getImageDetailsByDestinationId(payload).subscribe(data => {
@@ -55,7 +58,7 @@ getImageDetailsByDestinationId() {
 
   getAllSubImageDetailsByDestinationId() {
     const payload = { destinationid: this.destinationid };
-  
+
     this.Svc.getAllSubImageDetailsByDestinationId(payload).subscribe(data => {
       if (Array.isArray(data)) {
         this.imageList = data
@@ -69,8 +72,37 @@ getImageDetailsByDestinationId() {
     });
   }
 
-  //getAllSubImageDetailsByDestinationId
+// 
+  // getAllPackageDetailsByDestinationId() {
+    // const payload = { destinationid: this.destinationid };
+// 
+    // this.Svc.getAllPackageDetailsByDestinationId(payload).subscribe(data => {
+// 
+      // console.log(data)
+// 
+// 
+    // })
+  // }
 
+  getAllPackageDetailsByDestinationId() {
+    const payload = { destinationid: this.destinationid };
+    this.Svc.getAllPackageDetailsByDestinationId(payload).subscribe(
+      (data) => {
+        if (Array.isArray(data)) {
+          this.packageDetails = data.map((item) => ({
+            noofdays: item.noofdays,
+            noofnight: item.noofnight,
+          }));
+        } else {
+          console.error('Unexpected response for packages:', data);
+        }
+      },
+      (error) => {
+        console.error('Error fetching package details:', error);
+      }
+    );
+  }
+  
 
 
 
@@ -98,11 +130,7 @@ getImageDetailsByDestinationId() {
 
 
 
-  }
-
-  
-
- 
+}
 
 
 
@@ -110,7 +138,11 @@ getImageDetailsByDestinationId() {
 
 
 
-  
+
+
+
+
+
 
 
 

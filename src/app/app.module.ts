@@ -50,6 +50,7 @@ import { SaveImageSubComponent } from './Image/save-image-sub/save-image-sub.com
 import { SaveRoleComponent } from './Role/save-role/save-role.component';
 import { MenuComponent } from './Menu/menu/menu.component';
 import { RoleListComponent } from './Role/role-list/role-list.component';
+import { SavePackageComponent } from './Packages/save-package/save-package.component';
 
 
 
@@ -67,6 +68,7 @@ import { RoleListComponent } from './Role/role-list/role-list.component';
     SaveRoleComponent,
     MenuComponent,
     RoleListComponent,
+    SavePackageComponent,
     
     
   ],

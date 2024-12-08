@@ -28,7 +28,6 @@
   max-width: 600px; /* Limits the text box size for readability */
 }
 
-
 .image-container {
   display: flex;
   gap: 15px; /* Adds spacing between the images */
@@ -39,20 +38,67 @@
 }
 
 .image-card {
+  display: flex;
+  flex-direction: column;
   flex: 0 0 auto; /* Prevents flex items from shrinking or growing */
-  width: 300px; /* Increases the card size */
+  width: 270px; /* Adjusted card width to make it slightly smaller */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds a shadow effect for better visuals */
-  border-radius: 5px; /* Optional: Rounds the corners of the card */
+  border-radius: 10px; /* Rounded corners for card */
   overflow: hidden; /* Ensures child elements stay within the card */
+  background: linear-gradient(135deg, #dbdbe0, #1973ea ,#bf86e4); /* Gradient background */
+  margin: 10px; /* Adds margin between cards */
+  border: 2px solid #fff; /* Adds a white border to make it more like a box */
+}
+
+.card-image-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%; /* Ensures the image container takes the full width */
+  height: 180px; /* Slightly smaller height */
+  overflow: hidden;
 }
 
 .card-image {
-  width: 100%; /* Ensures images fit within their container */
-  height: auto; /* Maintains aspect ratio */
-  display: block;
+  width: 100%; /* Ensures the image takes full available width of its container */
+  height: 100%; /* Makes image fill the container height */
+  object-fit: cover; /* Ensures the image covers the available space without distortion */
 }
 
+.package-info {
+  padding: 15px; /* Adds space around the package details */
+  font-size: 14px; /* Adjusts text size for readability */
+  line-height: 1.6; /* Spacing between lines for clarity */
+  color: #333; /* Darker gray for better readability */
+  background-color: var(--mat-card-background, #ece2e2); /* Matches mat-card background */
+  border-top: 1px solid #ddd; /* Separator between image and package info */
+  width: 100%;
+  border-radius: 0 0 10px 10px; /* Rounded bottom corners */
+}
 
+.package-info p {
+  margin: 5px 0; /* Adds vertical spacing between paragraphs */
+}
 
+/* New layout for the package details */
+.package-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
 
+.package-detail-item {
+  width: calc(50% - 7.5px); /* Half width with spacing */
+  text-align: left;
+}
 
+.package-detail-item span {
+  display: block;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .package-detail-item {
+    width: 100%; /* Makes items stack vertically on smaller screens */
+  }
+}

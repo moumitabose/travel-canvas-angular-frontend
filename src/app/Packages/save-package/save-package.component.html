@@ -1,0 +1,67 @@
+<form [formGroup]="SavePackageForm">
+    <!-- Header Section -->
+    <div style="font-size: 40px; text-align: center; margin-top: 3%;">
+        <h2>Save Package Details</h2>
+    </div>
+
+    <!-- Form Fields Section -->
+    <div
+        style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; margin-top: 20px;">
+        <!-- No of Days -->
+        <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+            <mat-label>No of Days</mat-label>
+            <input matInput type="number" placeholder="Enter No of Days" formControlName="noofdays" />
+        </mat-form-field>
+
+        <!-- No of Nights -->
+        <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+            <mat-label>No of Nights</mat-label>
+            <input matInput type="number" placeholder="Enter No of Nights" formControlName="noofnight" />
+        </mat-form-field>
+
+        <!-- Price Per Person -->
+        <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+            <mat-label>Price Per Person</mat-label>
+            <input matInput type="number" placeholder="Enter Price Per Person" formControlName="priceperperson" />
+        </mat-form-field>
+
+        <!-- City Dropdown -->
+        <mat-form-field appearance="fill" style="width: 100%; max-width: 400px; margin: auto;">
+            <mat-label>Select City</mat-label>
+            <mat-select [(value)]="selectedCityId" (selectionChange)="onCityChange()" formControlName="destinationid">
+                <mat-option *ngFor="let destination of destinations" [value]="destination.cityid">
+                    {{ destination.cityname }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- Country Display -->
+        <mat-form-field appearance="fill" style="width: 100%; max-width: 400px; margin: auto;">
+            <mat-label>Country</mat-label>
+            <input matInput [value]="selectedCountry" readonly />
+        </mat-form-field>
+
+        <!-- Created Date and Time -->
+        <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+            <mat-label>Created Date and Time</mat-label>
+            <input matInput placeholder="Created Date and Time" formControlName="createdt" readonly />
+        </mat-form-field>
+
+        <!-- Created By -->
+        <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+            <mat-label>Created By</mat-label>
+            <input matInput placeholder="Enter Your Name" formControlName="createby" />
+        </mat-form-field>
+
+
+
+
+
+
+    </div>
+
+    <!-- Save Button -->
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+        <button mat-raised-button color="primary" (click)="savePackage()">Save</button>
+    </div>
+</form>

@@ -12,7 +12,33 @@
 
 
 <div class="image-container">
-  <mat-card *ngFor="let image of imageList" class="image-card">
-    <img [src]="'data:image/jpeg;base64,' + image" alt="Destination Image" class="card-image" />
+  <mat-card *ngFor="let image of imageList; let i = index" class="image-card">
+    <div class="card-image-container">
+      <img [src]="'data:image/jpeg;base64,' + image" alt="Destination Image" class="card-image" />
+    </div>
+    <div *ngIf="packageDetails[i]" class="package-info">
+      <p><strong>No of Days:</strong> {{ packageDetails[i].noofdays }}</p>
+      <p><strong>No of Nights:</strong> {{ packageDetails[i].noofnight }}</p>
+      <div class="package-details">
+        <div class="package-detail-item">
+          <span>Round Trip Flights</span>
+        </div>
+        <div class="package-detail-item">
+          <span>Airport Transfers</span>
+        </div>
+        <div class="package-detail-item">
+          <span>Activities</span>
+        </div>
+        <div class="package-detail-item">
+          <span>Visa</span>
+        </div>
+        <div class="package-detail-item">
+          <span>4 Star Hotel</span>
+        </div>
+        <div class="package-detail-item">
+          <span>Selected Meals</span>
+        </div>
+      </div>
+    </div>
   </mat-card>
 </div>

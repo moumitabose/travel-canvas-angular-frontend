@@ -20,6 +20,10 @@ export const environment = {
 
     getAllRoles: baseServiceUrl + "getAllRoles",
 
+    getAllRoleDetails: baseServiceUrl + "getAllRoleDetails",
+
+    updateRoledetails: baseServiceUrl + "updateRoledetails",
+
 
     ///////////////////////////////////////////COUNTRY//////////////////////////////////////////////////////////////////
 
@@ -30,6 +34,9 @@ export const environment = {
     getAllDestinationDetails: baseServiceUrl + "getAllDestinationDetails",
 
 
+    ///////////////////////////////////////////DESTINATION PACKAGE////////////////////////////////////////////////////////////////////
+
+    saveDestinationPackageDetails: baseServiceUrl + "saveDestinationPackageDetails",
 
     ///////////////////////////////////////////IMAGE//////////////////////////////////////////////////////////////////
 
@@ -44,6 +51,8 @@ export const environment = {
     uploadSubImage: baseServiceUrl + "uploadSubImage",
 
     getAllSubImageDetailsByDestinationId: baseServiceUrl + "getAllSubImageDetailsByDestinationId",
+
+    getAllPackageDetailsByDestinationId: baseServiceUrl + "getAllPackageDetailsByDestinationId",
 
   },
 };

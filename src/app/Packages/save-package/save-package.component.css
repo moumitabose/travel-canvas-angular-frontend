@@ -1,0 +1,16 @@
+/* Disable spinner on number input */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+
+::ng-deep .mat-snack-bar-container {
+  background-color: #4caf50 !important; 
+  color: white !important;            
+}
