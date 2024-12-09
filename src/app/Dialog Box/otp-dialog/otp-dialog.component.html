@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Enter OTP</h1>
+<div mat-dialog-content>
+  <p>An OTP has been sent to {{ data.email }}. Please enter it below:</p>
+  <form [formGroup]="otpForm">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>OTP</mat-label>
+      <input matInput formControlName="otp" type="text" maxlength="6" />
+      <mat-error *ngIf="otpForm.controls['otp'].invalid">OTP is required and must be 6 digits.</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="closeDialog()">Cancel</button>
+  <button mat-raised-button color="primary" [disabled]="otpForm.invalid" (click)="submitOtp()">Submit</button>
+</div>
+

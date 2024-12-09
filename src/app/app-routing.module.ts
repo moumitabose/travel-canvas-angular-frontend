@@ -11,6 +11,7 @@ import { SaveImageSubComponent } from './Image/save-image-sub/save-image-sub.com
 import { SaveRoleComponent } from './Role/save-role/save-role.component';
 import { RoleListComponent } from './Role/role-list/role-list.component';
 import { SavePackageComponent } from './Packages/save-package/save-package.component';
+import { SignUpComponent } from './Login/sign-up/sign-up.component';
 
 
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/travelCanvas', pathMatch: 'full' },
   { path: 'travelCanvas', component: HomePageComponent },
   { path: 'login', component: LoginFormComponent },
+  { path: 'signup', component: SignUpComponent },
   { path: 'roleCreation', component: SaveRoleComponent },
   { path: 'roleList', component: RoleListComponent },
   { path: 'userCreation', component: SaveUserFormComponent },

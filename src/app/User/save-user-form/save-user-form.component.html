@@ -1,119 +1,129 @@
 <form [formGroup]="SaveUserForm">
 
-    <div style="font-size:40px; text-align:center;margin-top: 3%;">
+  <div style="font-size:40px; text-align:center;margin-top: 3%;">
 
-        <h2> Save User Details </h2>
-    </div>
+    <h2> Save User Details </h2>
+  </div>
 
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; margin-top: 20px;">
-        <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
-          <mat-label>User Name</mat-label>
-          <input matInput id="username" placeholder="User Name" formControlName="name" />
-        </mat-form-field>
-      
-        <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
-          <mat-label>Email</mat-label>
-          <input matInput id="email" placeholder="Email" formControlName="email" />
-        </mat-form-field>
-      
-        <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
-          <mat-label>Password</mat-label>
-          <input matInput id="password" placeholder="Password" formControlName="password" type="password" />
-        </mat-form-field>
-      
-
-      <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
-        <mat-label>Roles</mat-label>
-        <mat-select [(value)]="selectedRoleId" (selectionChange)="onRoleChange($event)">
-          <mat-option *ngFor="let role of roles" [value]="role">
-            {{ role.rolename }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-  
-        <input matInput formControlName="roleid" readonly  hidden/>
-      
-      
-      <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
-        <mat-label>Selected Role Name</mat-label>
-        <input matInput formControlName="rolename" readonly />
-      </mat-form-field>
+  <div
+    style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; margin-top: 20px;">
 
 
-      <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
-        <mat-label>Country</mat-label>
-        <mat-select [(value)]="selectedCountryId" (selectionChange)="onCountryChange($event)">
-          <mat-option *ngFor="let country of countries" [value]="country">
-            {{ country.countryname }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+    <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+      <mat-label>Name</mat-label>
+      <input matInput id="name" placeholder="Name" formControlName="name" />
+      <div *ngIf="SaveUserForm.get('name')?.invalid && SaveUserForm.get('name')?.touched">
+        <small *ngIf="SaveUserForm.get('name')?.hasError('required')">Name is required.</small>
+      </div>
+    </mat-form-field>
 
-  
-        <input matInput formControlName="countryid" readonly  hidden/>
-      
-      
-      <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
-        <mat-label>Selected Country Name</mat-label>
-        <input matInput formControlName="countryname" readonly />
-      </mat-form-field>
-      
-    </div>
+    <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+      <mat-label>User Name</mat-label>
+      <input matInput id="username" placeholder="User Name" formControlName="username" />
+      <button mat-icon-button matSuffix (click)="checkUsernameAvailability()">
+        <mat-icon matTooltip="Verify your user name">help_outline</mat-icon>
+      </button>
+      <div *ngIf="SaveUserForm.get('username')?.invalid && SaveUserForm.get('username')?.touched">
+        <small *ngIf="SaveUserForm.get('username')?.hasError('required')">User Name is required.</small>
+      </div>
+    </mat-form-field>
 
+    <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+      <mat-label>Email</mat-label>
+      <input matInput id="email" placeholder="Email" formControlName="email" />
+      <div *ngIf="SaveUserForm.get('email')?.invalid && SaveUserForm.get('email')?.touched">
+        <small *ngIf="SaveUserForm.get('email')?.hasError('required')">Email is required.</small>
+        <small *ngIf="SaveUserForm.get('email')?.hasError('email')">Invalid email format.</small>
+      </div>
+    </mat-form-field>
 
-    <div class="col-md-6 offset-md-3">
+    <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+      <mat-label>Phone Number</mat-label>
+      <input matInput id="phone" placeholder="Phone Number" formControlName="phone" />
+      <div *ngIf="SaveUserForm.get('phone')?.invalid && SaveUserForm.get('phone')?.touched">
+        <small *ngIf="SaveUserForm.get('phone')?.hasError('required')">Phone number is required.</small>
+        <small *ngIf="SaveUserForm.get('phone')?.hasError('pattern')">Invalid phone number format.</small>
+      </div>
+    </mat-form-field>
 
-        <div class="form-group">
-
-
-
-
-        
-
-
-
-
-           
-
-
-         
-
-            <!-- <div style="text-align:center">
-                <button type="button" class="btn btn-success" style="margin-top: 18% ;width: 15%;"
-                    (click)="SaveUserDetails()"> Save</button>
-
-
-                &nbsp; &nbsp;
-
-                <button type="button" class="btn btn-danger bi bi-eraser" style="margin-top: 18% ;width: 15%;"
-                    (click)="reset()">
-                    Clear
-                </button>
-            </div> -->
-
-        </div>
-    </div>
-
- 
+    <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+      <mat-label>Password</mat-label>
+      <input matInput id="password" placeholder="Password" formControlName="password" type="password"
+        (keydown)="checkCapsLock($event)" />
+      <div *ngIf="isCapsLockOn">
+        <small style="color: red;">Caps Lock is ON</small>
+      </div>
+      <div *ngIf="SaveUserForm.get('password')?.invalid && SaveUserForm.get('password')?.touched">
+        <small *ngIf="SaveUserForm.get('password')?.hasError('required')">Password is required.</small>
+        <small *ngIf="SaveUserForm.get('password')?.hasError('passwordStrength')">
+          Password must be at least 8 characters long and contain an uppercase letter, a lowercase letter, a number, and
+          a special character.
+        </small>
+      </div>
+    </mat-form-field>
 
 
+    <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+      <mat-label>Re-enter Password</mat-label>
+      <input matInput id="repassword" placeholder="Re-enter Password" formControlName="repassword" type="password" />
+      <div *ngIf="SaveUserForm.get('repassword')?.invalid && SaveUserForm.get('repassword')?.touched">
+        <small *ngIf="SaveUserForm.get('repassword')?.hasError('required')">Re-enter Password is required.</small>
+        <!-- Error message for password mismatch -->
+        <small *ngIf="SaveUserForm.hasError('passwordMismatch') && SaveUserForm.get('repassword')?.touched">
+          Passwords do not match.
+        </small>
+      </div>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+      <mat-label>Country</mat-label>
+      <mat-select formControlName="countryid" [(value)]="selectedCountryId" (selectionChange)="onCountryChange($event)">
+        <mat-option *ngFor="let country of countries" [value]="country">
+          {{ country.countryname }}
+        </mat-option>
+      </mat-select>
+      <div *ngIf="SaveUserForm.get('countryid')?.invalid && SaveUserForm.get('countryid')?.touched">
+        <small *ngIf="SaveUserForm.get('countryid')?.hasError('required')">Country is required.</small>
+      </div>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+      <mat-label>Selected Country Name</mat-label>
+      <input matInput formControlName="countryname" readonly />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+      <mat-label>Roles</mat-label>
+      <mat-select formControlName="roleid" [(value)]="selectedRoleId" (selectionChange)="onRoleChange($event)">
+        <mat-option *ngFor="let role of roles" [value]="role">
+          {{ role.rolename }}
+        </mat-option>
+      </mat-select>
+      <div *ngIf="SaveUserForm.get('roleid')?.invalid && SaveUserForm.get('roleid')?.touched">
+        <small *ngIf="SaveUserForm.get('roleid')?.hasError('roleid')">Role is required.</small>
+      </div>
+    </mat-form-field>
+
+
+    <input matInput formControlName="roleid" readonly hidden />
+
+
+    <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+      <mat-label>Selected Role Name</mat-label>
+      <input matInput formControlName="rolename" readonly />
+    </mat-form-field>
+
+
+    <button mat-raised-button type="button" [disabled]="!usernameChecked" (click)="saveUserDetails()"
+      [matTooltip]="usernameChecked ? '' : 'Please check if the username is available.'">
+      Submit
+    </button>
+
+  </div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    <pre>
+  <pre>
         {{SaveUserForm.value|json}}
     </pre>
 

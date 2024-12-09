@@ -1,0 +1,97 @@
+<form [formGroup]="SignUpForm">
+    <div style="font-size:40px; text-align:center; margin-top: 3%; color: #4CAF50;"> 
+      <h2>No Passport Required, Just Sign Up and Go!</h2>
+    </div>
+  
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; margin-top: 20px;">
+    
+      <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+        <mat-label>Name</mat-label>
+        <input matInput id="name" placeholder="Name" formControlName="name" />
+        <div *ngIf="SignUpForm.get('name')?.invalid && SignUpForm.get('name')?.touched">
+          <small *ngIf="SignUpForm.get('name')?.hasError('required')">Name is required.</small>
+        </div>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+        <mat-label>User Name</mat-label>
+        <input matInput id="username" placeholder="User Name" formControlName="username" />
+        <button mat-icon-button matSuffix (click)="checkUsernameAvailability()">
+          <mat-icon matTooltip="Verify your user name">help_outline</mat-icon>
+        </button>
+        <div *ngIf="SignUpForm.get('username')?.invalid && SignUpForm.get('username')?.touched">
+          <small *ngIf="SignUpForm.get('username')?.hasError('required')">User Name is required.</small>
+        </div>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+        <mat-label>Email</mat-label>
+        <input matInput id="email" placeholder="Email" formControlName="email" />
+        <div *ngIf="SignUpForm.get('email')?.invalid && SignUpForm.get('email')?.touched">
+          <small *ngIf="SignUpForm.get('email')?.hasError('required')">Email is required.</small>
+          <small *ngIf="SignUpForm.get('email')?.hasError('email')">Invalid email format.</small>
+        </div>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+        <mat-label>Phone Number</mat-label>
+        <input matInput id="phone" placeholder="Phone Number" formControlName="phone" />
+        <div *ngIf="SignUpForm.get('phone')?.invalid && SignUpForm.get('phone')?.touched">
+          <small *ngIf="SignUpForm.get('phone')?.hasError('required')">Phone number is required.</small>
+          <small *ngIf="SignUpForm.get('phone')?.hasError('pattern')">Invalid phone number format.</small>
+        </div>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+        <mat-label>Password</mat-label>
+        <input matInput id="password" placeholder="Password" formControlName="password" type="password" (keydown)="checkCapsLock($event)" />
+        <div *ngIf="isCapsLockOn">
+          <small style="color: red;">Caps Lock is ON</small>
+        </div>
+        <div *ngIf="SignUpForm.get('password')?.invalid && SignUpForm.get('password')?.touched">
+          <small *ngIf="SignUpForm.get('password')?.hasError('required')">Password is required.</small>
+          <small *ngIf="SignUpForm.get('password')?.hasError('passwordStrength')">
+            Password must be at least 8 characters long and contain an uppercase letter, a lowercase letter, a number, and a special character.
+          </small>
+        </div>
+      </mat-form-field>
+      
+    
+      <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+        <mat-label>Re-enter Password</mat-label>
+        <input matInput id="repassword" placeholder="Re-enter Password" formControlName="repassword" type="password" />
+        <div *ngIf="SignUpForm.get('repassword')?.invalid && SignUpForm.get('repassword')?.touched">
+          <small *ngIf="SignUpForm.get('repassword')?.hasError('required')">Re-enter Password is required.</small>
+          <!-- Error message for password mismatch -->
+          <small *ngIf="SignUpForm.hasError('passwordMismatch') && SignUpForm.get('repassword')?.touched">
+            Passwords do not match.
+          </small>
+        </div>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+        <mat-label>Country</mat-label>
+        <mat-select formControlName="countryid" [(value)]="selectedCountryId" (selectionChange)="onCountryChange($event)">
+          <mat-option *ngFor="let country of countries" [value]="country">
+            {{ country.countryname }}
+          </mat-option>
+        </mat-select>
+        <div *ngIf="SignUpForm.get('countryid')?.invalid && SignUpForm.get('countryid')?.touched">
+          <small *ngIf="SignUpForm.get('countryid')?.hasError('required')">Country is required.</small>
+        </div>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" style="width: 100%; max-width: 400px;">
+        <mat-label>Selected Country Name</mat-label>
+        <input matInput formControlName="countryname" readonly />
+      </mat-form-field>
+  
+      <button mat-raised-button type="button" 
+              [disabled]="!usernameChecked" 
+              (click)="saveSignInForm()"
+              [matTooltip]="usernameChecked ? '' : 'Please check if the username is available.'">
+        Submit
+      </button>
+    </div>
+  </form>
+  

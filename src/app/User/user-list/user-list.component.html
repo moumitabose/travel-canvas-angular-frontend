@@ -1,0 +1,75 @@
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+    <ng-container matColumnDef="sl">
+        <mat-header-cell *matHeaderCellDef> Sl.No.</mat-header-cell>
+        <mat-cell *matCellDef="let element; let i = index;">
+
+            {{ (paginatorRef.pageIndex * paginatorRef.pageSize) + (i + 1) }}
+
+
+        </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="username">
+        <mat-header-cell *matHeaderCellDef> User Name</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.username}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef> Email</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.email}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="rolename">
+        <mat-header-cell *matHeaderCellDef> Role Name</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.rolename}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="countryname">
+        <mat-header-cell *matHeaderCellDef> Country Name</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.countryname}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="activeflag">
+        <mat-header-cell *matHeaderCellDef> Active </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+            {{
+            element.activeflag === 'Y' ? 'Active' :
+            element.activeflag === 'N' ? 'Not Active' : ''
+
+            }}
+        </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="createby">
+        <mat-header-cell *matHeaderCellDef> Create By</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.createby}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="createdt">
+        <mat-header-cell *matHeaderCellDef> createdt
+            Date</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.createdt|date:'dd-MM-yyyy'}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="modby">
+        <mat-header-cell *matHeaderCellDef> mod By</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.modby}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="moddt">
+        <mat-header-cell *matHeaderCellDef> moddt
+            Date</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.moddt|date:'dd-MM-yyyy'}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<mat-paginator #paginatorRef [length]="5" [pageSize]="5" [pageSizeOptions]="[ 5,10, 20, 30]" showFirstLastButtons>
+</mat-paginator>

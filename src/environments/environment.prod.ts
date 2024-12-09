@@ -24,6 +24,11 @@ export const environment = {
 
     updateRoledetails: baseServiceUrl + "updateRoledetails",
 
+    ///////////////////////////////////////////USER//////////////////////////////////////////////////////////////////
+
+    getAllUserDetails: baseServiceUrl + "getAllUserDetails",
+
+    saveUserDetails: baseServiceUrl + "saveUserDetails",
 
     ///////////////////////////////////////////COUNTRY//////////////////////////////////////////////////////////////////
 
@@ -37,6 +42,8 @@ export const environment = {
     ///////////////////////////////////////////DESTINATION PACKAGE////////////////////////////////////////////////////////////////////
 
     saveDestinationPackageDetails: baseServiceUrl + "saveDestinationPackageDetails",
+
+    getAllPackageDetailsByDestinationId: baseServiceUrl + "getAllPackageDetailsByDestinationId",
 
     ///////////////////////////////////////////IMAGE//////////////////////////////////////////////////////////////////
 
@@ -52,7 +59,17 @@ export const environment = {
 
     getAllSubImageDetailsByDestinationId: baseServiceUrl + "getAllSubImageDetailsByDestinationId",
 
-    getAllPackageDetailsByDestinationId: baseServiceUrl + "getAllPackageDetailsByDestinationId",
 
+
+    ///////////////////////////////////////////EMAIL-REQUEST//////////////////////////////////////////////////////////////////
+
+    sendEmail: baseServiceUrl + "sendEmail",
+
+    saveEmailDetails: baseServiceUrl + "saveEmailDetails",
+
+
+    ////////////////////////////////////////////////////////OTP-VALIDATE/////////////////////////////////////////////////
+
+    validateOtp:baseServiceUrl + "validateOtp",
   },
 };

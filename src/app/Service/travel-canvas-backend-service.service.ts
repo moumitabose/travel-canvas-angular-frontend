@@ -55,6 +55,26 @@ export class TravelCanvasBackendServiceService {
       });
   }
 
+ ///////////////////////////////////////////USER//////////////////////////////////////////////////////////////////
+
+ getAllUserDetails() {
+  return this.http.get<any>(environment.url.getAllUserDetails)
+}
+
+saveUserDetails(data: any): Observable<any> {
+  return this.http.post(`${environment.url.saveUserDetails}`, data,
+    {
+      headers: new HttpHeaders({
+        'custom-header': 'application/json'
+      })
+    });
+}
+
+
+
+
+
+
   ///////////////////////////////////////////COUNTRY//////////////////////////////////////////////////////////////////
 
 
@@ -77,6 +97,15 @@ export class TravelCanvasBackendServiceService {
 
   saveDestinationPackageDetails(data: any): Observable<any> {
     return this.http.post(`${environment.url.saveDestinationPackageDetails}`, data,
+      {
+        headers: new HttpHeaders({
+          'custom-header': 'application/json'
+        })
+      });
+  }
+
+  getAllPackageDetailsByDestinationId(data: any): Observable<any> {
+    return this.http.post(`${environment.url.getAllPackageDetailsByDestinationId}`, data,
       {
         headers: new HttpHeaders({
           'custom-header': 'application/json'
@@ -130,15 +159,38 @@ export class TravelCanvasBackendServiceService {
       });
   }
 
+  ///////////////////////////////////////////EMAIL-REQUEST//////////////////////////////////////////////////////////////////
 
-  getAllPackageDetailsByDestinationId(data: any): Observable<any> {
-    return this.http.post(`${environment.url.getAllPackageDetailsByDestinationId}`, data,
+
+  sendEmail(data: any): Observable<any> {
+    return this.http.post(`${environment.url.sendEmail}`, data,
       {
         headers: new HttpHeaders({
           'custom-header': 'application/json'
         })
       });
   }
+
+  saveEmailDetails(data: any): Observable<any> {
+    return this.http.post(`${environment.url.saveEmailDetails}`, data,
+      {
+        headers: new HttpHeaders({
+          'custom-header': 'application/json'
+        })
+      });
+  }
+
+ ////////////////////////////////////////////////////////OTP-VALIDATE/////////////////////////////////////////////////
+
+
+ validateOtp(data: any): Observable<any> {
+  return this.http.post(`${environment.url.validateOtp}`, data,
+    {
+      headers: new HttpHeaders({
+        'custom-header': 'application/json'
+      })
+    });
+}
 
 
 }

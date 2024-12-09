@@ -51,6 +51,9 @@ import { SaveRoleComponent } from './Role/save-role/save-role.component';
 import { MenuComponent } from './Menu/menu/menu.component';
 import { RoleListComponent } from './Role/role-list/role-list.component';
 import { SavePackageComponent } from './Packages/save-package/save-package.component';
+import { UserListComponent } from './User/user-list/user-list.component';
+import { SignUpComponent } from './Login/sign-up/sign-up.component';
+import { OtpDialogComponent } from './Dialog Box/otp-dialog/otp-dialog.component';
 
 
 
@@ -69,6 +72,9 @@ import { SavePackageComponent } from './Packages/save-package/save-package.compo
     MenuComponent,
     RoleListComponent,
     SavePackageComponent,
+    UserListComponent,
+    SignUpComponent,
+    OtpDialogComponent,
     
     
   ],
