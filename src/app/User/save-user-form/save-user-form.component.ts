@@ -33,10 +33,9 @@ export class SaveUserFormComponent implements OnInit {
 
 
 
-  constructor(private router: Router, 
+  constructor(private router: Router,
     private Svc: TravelCanvasBackendServiceService, private fb: UntypedFormBuilder, private snackBar: MatSnackBar,
-    private passwordSvc: PasswordValidatorService,) 
-    {
+    private passwordSvc: PasswordValidatorService,) {
   }
 
   ngOnInit(): void {
@@ -49,18 +48,19 @@ export class SaveUserFormComponent implements OnInit {
       password: ['', [Validators.required, this.passwordSvc.passwordValidator()]],  // Password field
       repassword: ['', Validators.required],  // Re-enter password field
       roleid: ['', Validators.required],
-      countryid: ['', Validators.required],
+      //countryid: ['', Validators.required],
+      rolename: [''],
+
       countryname: [''],
       createby: [1],
     }, { validators: this.passwordMatchValidator });  // Apply the password match validator here
 
 
     this.getAllRoles();
-    this.getAllCountries();
+    // this.getAllCountries();
   }
 
-  getAllRoles()
-  {
+  getAllRoles() {
     this.Svc.getAllRoles().subscribe(data => {
 
       console.log(data);
@@ -69,65 +69,71 @@ export class SaveUserFormComponent implements OnInit {
     })
   }
 
-  getAllCountries ()
-  {
-    this.Svc.getAllCountries().subscribe(data => {
+  // getAllCountries ()
+  // {
+  // this.Svc.getAllCountries().subscribe(data => {
 
-      console.log(data);
-      this.countries = data;
+  // console.log(data);
+  // this.countries = data;
 
-    })
-  }
+  // })
+  // }
 
 
 
   saveUserDetails() {
     if (this.SaveUserForm.valid) {
       console.log('Form Submitted', this.SaveUserForm.value);
-  
+
       const payload = {
-        username: this.SaveUserForm.controls['username'].value,
+        username: this.SaveUserForm.controls['name'].value,
         email: this.SaveUserForm.controls['email'].value,
         phone: this.SaveUserForm.controls['phone'].value,
         password: this.SaveUserForm.controls['password'].value,
         roleid: this.SaveUserForm.controls['roleid'].value,
-        countryid: this.SaveUserForm.controls['countryid'].value,
+        // countryid: this.SaveUserForm.controls['countryid'].value,
         createby: this.SaveUserForm.controls['createby'].value,
         activeflag: 'Y'
       };
-  
+
       // Start saving user details
       this.Svc.saveUserDetails(payload).subscribe(
         userSaveRes => {
           console.log(userSaveRes);
-  
+
           // Prepare payload for email save
           const payloadForEmailSave = {
-            recipient: this.SaveUserForm.controls['recipient'].value,
-            subject: this.SaveUserForm.controls['subject'].value,
-            body: this.generateEmailBody(),
-            createby: this.SaveUserForm.controls['createby'].value,
+            recipient: userSaveRes.email,
+            subject: "hello",
+            body: "Welcome to TravelCanvas! We're excited to have you on board.",
+            // body: this.generateEmailBody(),
+            //   createby: this.SaveUserForm.controls['createby'].value,
             activeflag: 'Y',
             userid: userSaveRes.userid,
           };
-  
+
+          console.log(payloadForEmailSave)
+
           // Save email details
           this.Svc.saveEmailDetails(payloadForEmailSave).subscribe(
             emailSaveRes => {
               console.log(emailSaveRes);
-  
+
               // Prepare payload for sending the email
               const payloadForEmailSend = {
-                recipient: this.SaveUserForm.controls['recipient'].value,
-                subject: this.SaveUserForm.controls['subject'].value,
-                body: this.generateEmailBody()
+                // recipient: this.SaveUserForm.controls['recipient'].value,
+                // subject: this.SaveUserForm.controls['subject'].value,
+                recipient: userSaveRes.email,
+                subject: "hello",
+                // body: this.generateEmailBody()
+                body: "Welcome to TravelCanvas! We're excited to have you on board."
               };
-  
+
               // Send the email
               this.Svc.sendEmail(payloadForEmailSend).subscribe(
                 emailSendRes => {
                   console.log(emailSendRes);
-  
+
                   // Show success message via snackbar
                   this.snackBar.open(
                     `User ${payload.username} created and email has been sent to ${payload.email}.`,
@@ -154,8 +160,18 @@ export class SaveUserFormComponent implements OnInit {
     }
   }
 
-  reset()
-  {
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+  reset() {
 
   }
 
@@ -167,13 +183,13 @@ export class SaveUserFormComponent implements OnInit {
     });
   }
 
-  onCountryChange(event: any): void {
-    const selectedCountryId = event.value;
-    this.SaveUserForm.patchValue({
-      countryid: selectedCountryId.countryid,
-      countryname: selectedCountryId.countryname
-    });
-  }
+  // onCountryChange(event: any): void {
+  // const selectedCountryId = event.value;
+  // this.SaveUserForm.patchValue({
+  // countryid: selectedCountryId.countryid,
+  // countryname: selectedCountryId.countryname
+  // });
+  // }
 
   checkCapsLock(event: KeyboardEvent): void {
     this.isCapsLockOn = event.getModifierState('CapsLock');

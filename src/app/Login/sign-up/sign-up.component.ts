@@ -46,31 +46,31 @@ export class SignUpComponent implements OnInit {
       password: ['', [Validators.required, this.passwordSvc.passwordValidator()]],  // Password field
       repassword: ['', Validators.required],  // Re-enter password field
       roleid: [3],
-      countryid: ['', Validators.required],
+      //countryid: ['', Validators.required],
       countryname: [''],
       createby: [2],
     }, { validators: this.passwordMatchValidator });  // Apply the password match validator here
 
-    this.getAllCountries();
+    //this.getAllCountries();
   }
 
 
 
 
-  getAllCountries() {
-    this.Svc.getAllCountries().subscribe(data => {
-      console.log(data);
-      this.countries = data;
-    });
-  }
+  // getAllCountries() {
+    // this.Svc.getAllCountries().subscribe(data => {
+      // console.log(data);
+      // this.countries = data;
+    // });
+  // }
 
-  onCountryChange(event: any): void {
-    const selectedCountryId = event.value;
-    this.SignUpForm.patchValue({
-      countryid: selectedCountryId.countryid,
-      countryname: selectedCountryId.countryname
-    });
-  }
+  // onCountryChange(event: any): void {
+    // const selectedCountryId = event.value;
+    // this.SignUpForm.patchValue({
+      // countryid: selectedCountryId.countryid,
+      // countryname: selectedCountryId.countryname
+    // });
+  // }
 
   checkCapsLock(event: KeyboardEvent): void {
     this.isCapsLockOn = event.getModifierState('CapsLock');
@@ -222,7 +222,7 @@ export class SignUpComponent implements OnInit {
                   phone: this.SignUpForm.controls['phone'].value,
                   password: this.SignUpForm.controls['password'].value,
                   roleid: this.SignUpForm.controls['roleid'].value,
-                  countryid: this.SignUpForm.controls['countryid'].value,
+                 // countryid: this.SignUpForm.controls['countryid'].value,
                   createby: this.SignUpForm.controls['createby'].value,
                   activeflag: 'Y'
                 };
