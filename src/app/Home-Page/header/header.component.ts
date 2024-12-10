@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Misc/auth-service';
 
 @Component({
@@ -9,8 +10,9 @@ import { AuthService } from 'src/app/Misc/auth-service';
 export class HeaderComponent implements OnInit {
 
   loginData: any;
-  
-  constructor(private authService: AuthService) { }
+
+
+  constructor(private authService: AuthService,private router: Router) { }
 
   ngOnInit(): void {
     // Subscribe to loginData changes
@@ -18,6 +20,15 @@ export class HeaderComponent implements OnInit {
       this.loginData = data;
       console.log(this.loginData);
     });
+  }
+
+  logout()
+  {
+    localStorage.clear();
+    this.router.navigate(['login'])
+      .then(() => {
+        window.location.reload();
+      })
   }
 
 }

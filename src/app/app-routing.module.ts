@@ -12,6 +12,10 @@ import { SaveRoleComponent } from './Role/save-role/save-role.component';
 import { RoleListComponent } from './Role/role-list/role-list.component';
 import { SavePackageComponent } from './Packages/save-package/save-package.component';
 import { SignUpComponent } from './Login/sign-up/sign-up.component';
+import { UserListComponent } from './User/user-list/user-list.component';
+import { SaveCountryComponent } from './Country/save-country/save-country.component';
+import { CountryListComponent } from './Country/country-list/country-list.component';
+import { SaveCityComponent } from './City/save-city/save-city.component';
 
 
 
@@ -23,6 +27,10 @@ const routes: Routes = [
   { path: 'roleCreation', component: SaveRoleComponent },
   { path: 'roleList', component: RoleListComponent },
   { path: 'userCreation', component: SaveUserFormComponent },
+  { path: 'userList', component: UserListComponent },
+  { path: 'countryList', component: CountryListComponent },
+  { path: 'countryCreation', component: SaveCountryComponent },
+  { path: 'cityCreation', component: SaveCityComponent },
   { path: 'search', component: ChooseDestinationComponent },
   { path: 'package', component: ShowPackageListComponent },
   { path: 'savePacakage', component: SavePackageComponent },

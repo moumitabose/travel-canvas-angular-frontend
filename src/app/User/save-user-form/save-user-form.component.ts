@@ -1,17 +1,10 @@
 import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
-import { formatDate } from '@angular/common';
-
 import { Router } from '@angular/router';
-import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { DatePipe } from '@angular/common';
-import { MatDialog } from '@angular/material/dialog';
 import { UntypedFormBuilder, UntypedFormGroup, FormBuilder, FormArray, Validators, FormControl, FormGroup } from '@angular/forms';
-
-import { MatPaginator } from '@angular/material/paginator';
-import { Observable } from 'rxjs';
 import { TravelCanvasBackendServiceService } from 'src/app/Service/travel-canvas-backend-service.service';
 import { PasswordValidatorService } from 'src/app/Misc/password-validator.service';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -30,6 +23,14 @@ export class SaveUserFormComponent implements OnInit {
   selectedCountryId: number | null = null; // Selected Role ID
   usernameChecked: boolean = false;  // Track whether the username check has been done
   isCapsLockOn = false;
+
+  
+  currentDateTime!: string;
+  todaysDate: any;
+  startTime!: any;
+
+  pipe = new DatePipe('en-US');
+  now = Date.now();
 
 
 
@@ -50,14 +51,31 @@ export class SaveUserFormComponent implements OnInit {
       roleid: ['', Validators.required],
       //countryid: ['', Validators.required],
       rolename: [''],
-
       countryname: [''],
       createby: [1],
+      createdt: [this.currentDateTime],
     }, { validators: this.passwordMatchValidator });  // Apply the password match validator here
 
 
     this.getAllRoles();
+    this.time();
     // this.getAllCountries();
+  }
+
+  time() {
+    this.todaysDate = this.pipe.transform(this.now, 'yyyy-MM-dd');
+    const d1 = new Date();
+  
+    // Ensure two-digit formatting for hours, minutes, and seconds
+    const hours = d1.getHours().toString().padStart(2, '0');
+    const minutes = d1.getMinutes().toString().padStart(2, '0');
+    const seconds = d1.getSeconds().toString().padStart(2, '0');
+  
+    this.startTime = `${hours}:${minutes}:${seconds}`;
+    this.currentDateTime = `${this.todaysDate}T${this.startTime}`;
+    console.log(this.currentDateTime);
+  
+    this.SaveUserForm.controls['createdt'].setValue(this.currentDateTime);
   }
 
   getAllRoles() {
@@ -159,16 +177,6 @@ export class SaveUserFormComponent implements OnInit {
       );
     }
   }
-
- 
- 
- 
- 
- 
- 
- 
- 
- 
 
 
   reset() {

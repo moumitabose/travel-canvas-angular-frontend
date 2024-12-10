@@ -32,7 +32,19 @@ export const environment = {
 
     ///////////////////////////////////////////COUNTRY//////////////////////////////////////////////////////////////////
 
+
     getAllCountries: baseServiceUrl + "getAllCountries",
+
+    getAllCountriesDetails: baseServiceUrl + "getAllCountriesDetails",
+
+    saveCountryDetails:  baseServiceUrl + "saveCountryDetails",
+
+    updateCountryDetails:  baseServiceUrl + "updateCountryDetails",
+
+    ///////////////////////////////////////////CITY//////////////////////////////////////////////////////////////////
+
+
+    saveCityDetails:  baseServiceUrl + "saveCityDetails",
 
     ///////////////////////////////////////////DESTINATION//////////////////////////////////////////////////////////////////
 
@@ -66,6 +78,8 @@ export const environment = {
     sendEmail: baseServiceUrl + "sendEmail",
 
     saveEmailDetails: baseServiceUrl + "saveEmailDetails",
+
+    sendotp: baseServiceUrl + "saveEmailDetails",
 
 
     ////////////////////////////////////////////////////////OTP-VALIDATE/////////////////////////////////////////////////

@@ -71,17 +71,46 @@ saveUserDetails(data: any): Observable<any> {
 }
 
 
-
-
-
-
   ///////////////////////////////////////////COUNTRY//////////////////////////////////////////////////////////////////
 
+  
 
   getAllCountries() {
     return this.http.get<any>(environment.url.getAllCountries)
   }
 
+  getAllCountriesDetails() {
+    return this.http.get<any>(environment.url.getAllCountriesDetails)
+  }
+
+  saveCountryDetails(data: any): Observable<any> {
+    return this.http.post(`${environment.url.saveCountryDetails}`, data,
+      {
+        headers: new HttpHeaders({
+          'custom-header': 'application/json'
+        })
+      });
+  }
+
+  updateCountryDetails(data: any): Observable<any> {
+    return this.http.post(`${environment.url.updateCountryDetails}`, data,
+      {
+        headers: new HttpHeaders({
+          'custom-header': 'application/json'
+        })
+      });
+  }
+
+   ///////////////////////////////////////////CITY//////////////////////////////////////////////////////////////////
+
+   saveCityDetails(data: any): Observable<any> {
+    return this.http.post(`${environment.url.saveCityDetails}`, data,
+      {
+        headers: new HttpHeaders({
+          'custom-header': 'application/json'
+        })
+      });
+  }
 
   ///////////////////////////////////////////DESTINATION//////////////////////////////////////////////////////////////////
 
@@ -173,6 +202,17 @@ saveUserDetails(data: any): Observable<any> {
 
   saveEmailDetails(data: any): Observable<any> {
     return this.http.post(`${environment.url.saveEmailDetails}`, data,
+      {
+        headers: new HttpHeaders({
+          'custom-header': 'application/json'
+        })
+      });
+  }
+
+
+
+  sendotp(data: any): Observable<any> {
+    return this.http.post(`${environment.url.sendotp}`, data,
       {
         headers: new HttpHeaders({
           'custom-header': 'application/json'

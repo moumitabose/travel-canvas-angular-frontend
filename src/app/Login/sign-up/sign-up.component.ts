@@ -119,79 +119,116 @@ export class SignUpComponent implements OnInit {
     `;
   }
 
+  
+
+
   // saveSignInForm() {
   //   if (this.SignUpForm.valid) {
   //     console.log('Form Submitted', this.SignUpForm.value);
   
-  //     const payload = {
-  //       username: this.SignUpForm.controls['username'].value,
-  //       email: this.SignUpForm.controls['email'].value,
-  //       phone: this.SignUpForm.controls['phone'].value,
-  //       password: this.SignUpForm.controls['password'].value,
-  //       roleid: this.SignUpForm.controls['roleid'].value,
-  //       countryid: this.SignUpForm.controls['countryid'].value,
-  //       createby: this.SignUpForm.controls['createby'].value,
-  //       activeflag: 'Y'
-  //     };
+  //     const email = this.SignUpForm.controls['email'].value;
   
-  //     // Start saving user details
-  //     this.Svc.saveUserDetails(payload).subscribe(
-  //       userSaveRes => {
-  //         console.log(userSaveRes);
+  //     // Open the OTP dialog for validation
+  //     const dialogRef = this.dialog.open(OtpDialogComponent, {
+  //       width: '300px',
+  //       data: { email: email } // Pass email to dialog
+  //     });
   
-  //         // Prepare payload for email save
-  //         const payloadForEmailSave = {
-  //           recipient: this.SignUpForm.controls['recipient'].value,
-  //           subject: this.SignUpForm.controls['subject'].value,
-  //           body: this.generateEmailBody(),
-  //           createby: this.SignUpForm.controls['createby'].value,
-  //           activeflag: 'Y',
-  //           userid: userSaveRes.userid,
-  //         };
+  //     // Handle dialog close
+  //     dialogRef.afterClosed().subscribe(otp => {
+  //       if (otp) {
+  //         console.log('OTP entered:', otp);
   
-  //         // Save email details
-  //         this.Svc.saveEmailDetails(payloadForEmailSave).subscribe(
-  //           emailSaveRes => {
-  //             console.log(emailSaveRes);
+  //         // Validate OTP before proceeding
+  //         this.Svc.validateOtp({ email: email, otp: otp }).subscribe(
+  //           otpValidationRes => {
+  //             if (otpValidationRes.valid) {
+  //               console.log('OTP is valid. Proceeding with user creation.');
   
-  //             // Prepare payload for sending the email
-  //             const payloadForEmailSend = {
-  //               recipient: this.SignUpForm.controls['recipient'].value,
-  //               subject: this.SignUpForm.controls['subject'].value,
-  //               body: this.generateEmailBody()
-  //             };
+  //               const payload = {
+  //                 username: this.SignUpForm.controls['username'].value,
+  //                 email: email,
+  //                 phone: this.SignUpForm.controls['phone'].value,
+  //                 password: this.SignUpForm.controls['password'].value,
+  //                 roleid: this.SignUpForm.controls['roleid'].value,
+  //                // countryid: this.SignUpForm.controls['countryid'].value,
+  //                 createby: this.SignUpForm.controls['createby'].value,
+  //                 activeflag: 'Y'
+  //               };
   
-  //             // Send the email
-  //             this.Svc.sendEmail(payloadForEmailSend).subscribe(
-  //               emailSendRes => {
-  //                 console.log(emailSendRes);
+  //               // Save user details
+  //               this.Svc.saveUserDetails(payload).subscribe(
+  //                 userSaveRes => {
+  //                   console.log('User saved:', userSaveRes);
   
-  //                 // Show success message via snackbar
-  //                 this.snackBar.open(
-  //                   `User ${payload.username} created and email has been sent to ${payload.email}.`,
-  //                   'Close',
-  //                   { duration: 5000 }
-  //                 );
-  //               },
-  //               error => {
-  //                 console.error('Error sending email:', error);
-  //               }
-  //             );
+  //                   // Prepare payload for email save
+  //                   const payloadForEmailSave = {
+  //                     recipient: this.SignUpForm.controls['recipient'].value,
+  //                     subject: this.SignUpForm.controls['subject'].value,
+  //                     body: this.generateEmailBody(),
+  //                     createby: this.SignUpForm.controls['createby'].value,
+  //                     activeflag: 'Y',
+  //                     userid: userSaveRes.userid,
+  //                   };
+  
+  //                   // Save email details
+  //                   this.Svc.saveEmailDetails(payloadForEmailSave).subscribe(
+  //                     emailSaveRes => {
+  //                       console.log('Email details saved:', emailSaveRes);
+  
+  //                       // Prepare payload for sending email
+  //                       const payloadForEmailSend = {
+  //                         recipient: this.SignUpForm.controls['recipient'].value,
+  //                         subject: this.SignUpForm.controls['subject'].value,
+  //                         body: this.generateEmailBody()
+  //                       };
+  
+  //                       // Send the email
+  //                       this.Svc.sendEmail(payloadForEmailSend).subscribe(
+  //                         emailSendRes => {
+  //                           console.log('Email sent:', emailSendRes);
+  
+  //                           // Show success message via snackbar
+  //                           this.snackBar.open(
+  //                             `User ${payload.username} created and email sent to ${payload.email}.`,
+  //                             'Close',
+  //                             { duration: 5000 }
+  //                           );
+  //                         },
+  //                         error => {
+  //                           console.error('Error sending email:', error);
+  //                           this.snackBar.open('Error sending email. Please try again.', 'Close', { duration: 5000 });
+  //                         }
+  //                       );
+  //                     },
+  //                     error => {
+  //                       console.error('Error saving email details:', error);
+  //                       this.snackBar.open('Error saving email details. Please try again.', 'Close', { duration: 5000 });
+  //                     }
+  //                   );
+  //                 },
+  //                 error => {
+  //                   console.error('Error saving user details:', error);
+  //                   this.snackBar.open('Failed to create user. Please try again.', 'Close', { duration: 5000 });
+  //                 }
+  //               );
+  //             } else {
+  //               console.error('Invalid or expired OTP');
+  //               this.snackBar.open('Invalid or expired OTP. Please try again.', 'Close', { duration: 5000 });
+  //             }
   //           },
   //           error => {
-  //             console.error('Error saving email details:', error);
+  //             console.error('Error validating OTP:', error);
+  //             this.snackBar.open('Failed to validate OTP. Please try again.', 'Close', { duration: 5000 });
   //           }
   //         );
-  //       },
-  //       error => {
-  //         console.error('Error saving user details:', error);
-  //         // Optionally show an error message via snackbar
-  //         this.snackBar.open('Failed to create user. Please try again.', 'Close', { duration: 5000 });
+  //       } else {
+  //         console.log('OTP dialog was closed without input.');
   //       }
-  //     );
+  //     });
   //   }
   // }
-
+  
 
   saveSignInForm() {
     if (this.SignUpForm.valid) {
@@ -199,108 +236,133 @@ export class SignUpComponent implements OnInit {
   
       const email = this.SignUpForm.controls['email'].value;
   
-      // Open the OTP dialog for validation
-      const dialogRef = this.dialog.open(OtpDialogComponent, {
-        width: '300px',
-        data: { email: email } // Pass email to dialog
-      });
+      // Send OTP to email
+      this.Svc.sendotp(email).subscribe({
+        next: () => {
+          console.log(`OTP sent to ${email}`);
   
-      // Handle dialog close
-      dialogRef.afterClosed().subscribe(otp => {
-        if (otp) {
-          console.log('OTP entered:', otp);
+          // Open the OTP dialog for user input
+          const dialogRef = this.dialog.open(OtpDialogComponent, {
+            width: '300px',
+            data: { email }, // Pass email to dialog
+          });
   
-          // Validate OTP before proceeding
-          this.Svc.validateOtp({ email: email, otp: otp }).subscribe(
-            otpValidationRes => {
-              if (otpValidationRes.valid) {
-                console.log('OTP is valid. Proceeding with user creation.');
-  
-                const payload = {
-                  username: this.SignUpForm.controls['username'].value,
-                  email: email,
-                  phone: this.SignUpForm.controls['phone'].value,
-                  password: this.SignUpForm.controls['password'].value,
-                  roleid: this.SignUpForm.controls['roleid'].value,
-                 // countryid: this.SignUpForm.controls['countryid'].value,
-                  createby: this.SignUpForm.controls['createby'].value,
-                  activeflag: 'Y'
-                };
-  
-                // Save user details
-                this.Svc.saveUserDetails(payload).subscribe(
-                  userSaveRes => {
-                    console.log('User saved:', userSaveRes);
-  
-                    // Prepare payload for email save
-                    const payloadForEmailSave = {
-                      recipient: this.SignUpForm.controls['recipient'].value,
-                      subject: this.SignUpForm.controls['subject'].value,
-                      body: this.generateEmailBody(),
-                      createby: this.SignUpForm.controls['createby'].value,
-                      activeflag: 'Y',
-                      userid: userSaveRes.userid,
-                    };
-  
-                    // Save email details
-                    this.Svc.saveEmailDetails(payloadForEmailSave).subscribe(
-                      emailSaveRes => {
-                        console.log('Email details saved:', emailSaveRes);
-  
-                        // Prepare payload for sending email
-                        const payloadForEmailSend = {
-                          recipient: this.SignUpForm.controls['recipient'].value,
-                          subject: this.SignUpForm.controls['subject'].value,
-                          body: this.generateEmailBody()
-                        };
-  
-                        // Send the email
-                        this.Svc.sendEmail(payloadForEmailSend).subscribe(
-                          emailSendRes => {
-                            console.log('Email sent:', emailSendRes);
-  
-                            // Show success message via snackbar
-                            this.snackBar.open(
-                              `User ${payload.username} created and email sent to ${payload.email}.`,
-                              'Close',
-                              { duration: 5000 }
-                            );
-                          },
-                          error => {
-                            console.error('Error sending email:', error);
-                            this.snackBar.open('Error sending email. Please try again.', 'Close', { duration: 5000 });
-                          }
-                        );
-                      },
-                      error => {
-                        console.error('Error saving email details:', error);
-                        this.snackBar.open('Error saving email details. Please try again.', 'Close', { duration: 5000 });
-                      }
-                    );
-                  },
-                  error => {
-                    console.error('Error saving user details:', error);
-                    this.snackBar.open('Failed to create user. Please try again.', 'Close', { duration: 5000 });
-                  }
-                );
-              } else {
-                console.error('Invalid or expired OTP');
-                this.snackBar.open('Invalid or expired OTP. Please try again.', 'Close', { duration: 5000 });
-              }
-            },
-            error => {
-              console.error('Error validating OTP:', error);
-              this.snackBar.open('Failed to validate OTP. Please try again.', 'Close', { duration: 5000 });
+          // Handle dialog close
+          dialogRef.afterClosed().subscribe((otp) => {
+            if (!otp) {
+              console.log('OTP dialog was closed without input.');
+              return;
             }
-          );
-        } else {
-          console.log('OTP dialog was closed without input.');
-        }
+  
+            console.log('OTP entered:', otp);
+  
+            // Validate the entered OTP
+            this.Svc.validateOtp({ email, otp }).subscribe({
+              next: (otpValidationRes) => {
+                if (otpValidationRes.valid) {
+                  console.log('OTP is valid. Proceeding with user creation.');
+  
+                  const payload = this.generateUserPayload();
+                  this.createUserAndSendEmail(payload);
+                } else {
+                  console.error('Invalid or expired OTP');
+                  this.snackBar.open('Invalid or expired OTP. Please try again.', 'Close', { duration: 5000 });
+                }
+              },
+              error: (error) => {
+                console.error('Error validating OTP:', error);
+                this.snackBar.open('Failed to validate OTP. Please try again.', 'Close', { duration: 5000 });
+              },
+            });
+          });
+        },
+        error: (error) => {
+          console.error('Error sending OTP:', error);
+          this.snackBar.open('Failed to send OTP. Please try again.', 'Close', { duration: 5000 });
+        },
       });
     }
   }
   
-
+  
+  private generateUserPayload() {
+    return {
+      username: this.SignUpForm.controls['username'].value,
+      email: this.SignUpForm.controls['email'].value,
+      phone: this.SignUpForm.controls['phone'].value,
+      password: this.SignUpForm.controls['password'].value,
+      roleid: this.SignUpForm.controls['roleid'].value,
+      createby: this.SignUpForm.controls['createby'].value,
+      activeflag: 'Y',
+    };
+  }
+  
+  private createUserAndSendEmail(payload: any) {
+    this.Svc.saveUserDetails(payload).subscribe({
+      next: (userSaveRes) => {
+        console.log('User saved:', userSaveRes);
+  
+        const emailPayload = this.generateEmailPayload(userSaveRes.userid);
+        this.saveEmailAndSend(emailPayload, payload);
+      },
+      error: (error) => {
+        console.error('Error saving user details:', error);
+        this.snackBar.open('Failed to create user. Please try again.', 'Close', { duration: 5000 });
+      },
+    });
+  }
+  
+  private generateEmailPayload(userId: number) {
+    return {
+      recipient: this.SignUpForm.controls['recipient'].value,
+      subject: this.SignUpForm.controls['subject'].value,
+      body: this.generateEmailBody(),
+      createby: this.SignUpForm.controls['createby'].value,
+      activeflag: 'Y',
+      userid: userId,
+    };
+  }
+  
+  private saveEmailAndSend(emailPayload: any, userPayload: any) {
+    this.Svc.saveEmailDetails(emailPayload).subscribe({
+      next: (emailSaveRes) => {
+        console.log('Email details saved:', emailSaveRes);
+  
+        const sendEmailPayload = {
+          recipient: this.SignUpForm.controls['recipient'].value,
+          subject: this.SignUpForm.controls['subject'].value,
+          body: this.generateEmailBody(),
+        };
+  
+        this.sendEmail(sendEmailPayload, userPayload);
+      },
+      error: (error) => {
+        console.error('Error saving email details:', error);
+        this.snackBar.open('Error saving email details. Please try again.', 'Close', { duration: 5000 });
+      },
+    });
+  }
+  
+  private sendEmail(emailPayload: any, userPayload: any) {
+    this.Svc.sendEmail(emailPayload).subscribe({
+      next: (emailSendRes) => {
+        console.log('Email sent:', emailSendRes);
+  
+        this.snackBar.open(
+          `User ${userPayload.username} created and email sent to ${userPayload.email}.`,
+          'Close',
+          { duration: 5000 }
+        );
+      },
+      error: (error) => {
+        console.error('Error sending email:', error);
+        this.snackBar.open('Error sending email. Please try again.', 'Close', { duration: 5000 });
+      },
+    });
+  }
+  
+ 
+  
 
 
 }

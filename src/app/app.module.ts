@@ -54,6 +54,9 @@ import { SavePackageComponent } from './Packages/save-package/save-package.compo
 import { UserListComponent } from './User/user-list/user-list.component';
 import { SignUpComponent } from './Login/sign-up/sign-up.component';
 import { OtpDialogComponent } from './Dialog Box/otp-dialog/otp-dialog.component';
+import { SaveCountryComponent } from './Country/save-country/save-country.component';
+import { CountryListComponent } from './Country/country-list/country-list.component';
+import { SaveCityComponent } from './City/save-city/save-city.component';
 
 
 
@@ -75,6 +78,9 @@ import { OtpDialogComponent } from './Dialog Box/otp-dialog/otp-dialog.component
     UserListComponent,
     SignUpComponent,
     OtpDialogComponent,
+    SaveCountryComponent,
+    CountryListComponent,
+    SaveCityComponent,
     
     
   ],
